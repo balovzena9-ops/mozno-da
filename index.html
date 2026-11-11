@@ -247,6 +247,29 @@
   .logo-intro-label{font-size:clamp(20px,5.4vw,30px);font-weight:900;letter-spacing:5px;background:linear-gradient(90deg,#ff6fb3 0%,#ff3a8a 22%,#a855f7 50%,#4ea8ff 78%,#ff6fb3 100%);background-size:220% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:introTextFlow 5s linear infinite;opacity:0;transform:translateY(10px);transition:opacity 1s ease 1.6s, transform 1s ease 1.6s;filter:drop-shadow(0 0 24px rgba(255,58,138,.4));}
   #logoIntro.show .logo-intro-label{opacity:1;transform:translateY(0);}
 
+  .device-wrap{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:34px;padding:32px 20px;opacity:0;visibility:hidden;transition:opacity .6s ease, visibility .6s ease;z-index:4;overflow:hidden;}
+  .device-wrap.show{opacity:1;visibility:visible;}
+  .device-wrap::before{content:'';position:absolute;inset:-30%;background:radial-gradient(circle at 20% 30%,rgba(255,58,138,.25),transparent 45%),radial-gradient(circle at 80% 70%,rgba(78,168,255,.25),transparent 45%),radial-gradient(circle at 50% 50%,rgba(168,85,247,.2),transparent 55%);filter:blur(60px);animation:bgSpin 20s linear infinite;pointer-events:none;z-index:-1;}
+  .device-title{font-size:clamp(22px,6vw,32px);font-weight:900;letter-spacing:1.4px;text-align:center;margin:0;background:linear-gradient(90deg,#ff6fb3 0%,#ff3a8a 22%,#a855f7 50%,#4ea8ff 78%,#ff6fb3 100%);background-size:220% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:introTextFlow 5s linear infinite;filter:drop-shadow(0 0 26px rgba(255,58,138,.5));line-height:1.2;opacity:0;transform:translateY(16px);transition:opacity .7s ease .1s, transform .7s cubic-bezier(.2,.8,.2,1) .1s;z-index:1;max-width:100%;}
+  .device-sub{font-size:13.5px;color:rgba(255,255,255,.55);font-weight:500;letter-spacing:.8px;margin:-20px 0 0;text-align:center;opacity:0;transform:translateY(10px);transition:opacity .7s ease .22s, transform .7s ease .22s;z-index:1;}
+  .device-wrap.show .device-title{opacity:1;transform:translateY(0);}
+  .device-wrap.show .device-sub{opacity:1;transform:translateY(0);}
+  .device-options{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;z-index:1;width:100%;max-width:520px;}
+  .device-card{position:relative;flex:1 1 180px;min-width:150px;max-width:230px;padding:26px 18px 22px;border-radius:24px;background:rgba(255,255,255,.045);box-shadow:inset 0 0 0 1px rgba(255,255,255,.1),0 12px 32px rgba(0,0,0,.45);display:flex;flex-direction:column;align-items:center;gap:12px;cursor:pointer;color:#fff;text-align:center;overflow:hidden;opacity:0;transform:translateY(24px) scale(.9);transition:opacity .65s cubic-bezier(.2,.8,.2,1), transform .65s cubic-bezier(.2,.8,.2,1), background .3s ease, box-shadow .3s ease;}
+  .device-wrap.show .device-card{opacity:1;transform:translateY(0) scale(1);}
+  .device-wrap.show .device-card:nth-child(1){transition-delay:.35s, .35s, 0s, 0s;}
+  .device-wrap.show .device-card:nth-child(2){transition-delay:.5s, .5s, 0s, 0s;}
+  .device-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,58,138,.22),rgba(168,85,247,.18) 50%,rgba(78,168,255,.22));opacity:0;transition:opacity .35s ease;z-index:0;pointer-events:none;}
+  .device-card::after{content:'';position:absolute;inset:0;background:linear-gradient(120deg,transparent 30%,rgba(255,255,255,.14) 50%,transparent 70%);background-size:220% 100%;background-position:100% 50%;opacity:0;transition:opacity .3s ease;pointer-events:none;z-index:1;}
+  .device-card:hover{background:rgba(255,255,255,.08);box-shadow:inset 0 0 0 1px rgba(255,58,138,.45),0 18px 44px rgba(255,58,138,.32),0 0 60px rgba(168,85,247,.2);transform:translateY(-4px) scale(1.02);}
+  .device-card:hover::before{opacity:1;}
+  .device-card:hover::after{opacity:1;animation:cardShine 2.2s linear infinite;}
+  .device-card:active{transform:scale(.96);}
+  .device-icon{font-size:46px;line-height:1;position:relative;z-index:2;filter:drop-shadow(0 4px 12px rgba(255,58,138,.45));transition:transform .35s cubic-bezier(.2,.8,.2,1);}
+  .device-card:hover .device-icon{transform:scale(1.12) rotate(-6deg);}
+  .device-name{font-size:17px;font-weight:800;letter-spacing:-.3px;position:relative;z-index:2;line-height:1.2;}
+  .device-desc{font-size:11.5px;color:rgba(255,255,255,.55);font-weight:500;position:relative;z-index:2;line-height:1.3;}
+
   .screen-loading{align-items:center;justify-content:center;gap:26px;padding:32px;background:#0a0a0a;overflow:hidden;}
   .screen-loading::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:conic-gradient(from 0deg,#ff3a8a 0%,#a855f7 18%,#4ea8ff 36%,#a855f7 54%,#ff6fb3 72%,#ff3a8a 100%);filter:blur(50px);opacity:.55;animation:loadSpin 14s linear infinite;pointer-events:none;z-index:0;}
   .screen-loading::after{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle at 30% 30%,rgba(255,58,138,.7),transparent 45%),radial-gradient(circle at 70% 70%,rgba(78,168,255,.7),transparent 45%),radial-gradient(circle at 50% 50%,rgba(168,85,247,.5),transparent 55%);filter:blur(40px);opacity:.55;animation:loadSpinReverse 20s linear infinite;pointer-events:none;z-index:0;}
@@ -500,6 +523,409 @@
   .songName{flex:1 1 auto;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
   .songDur{flex:0 0 auto;font-size:10.5px;font-variant-numeric:tabular-nums;opacity:.6;}
 
+  body.mobile-mode .library-layout{
+    flex-direction:column;
+    gap:12px;
+  }
+  body.mobile-mode .player-col{
+    flex:0 0 auto;
+    width:100%;
+    max-width:100%;
+  }
+  body.mobile-mode .playlist-col{
+    flex:1 1 auto;
+    min-height:0;
+    width:100%;
+  }
+  body.mobile-mode .island{
+    padding:16px 16px 18px;
+    border-radius:24px;
+  }
+  body.mobile-mode .controls .btn{
+    width:44px;
+    height:44px;
+  }
+  body.mobile-mode .controls .btn.play{
+    width:52px;
+    height:52px;
+  }
+  body.mobile-mode .navRow{
+    margin-top:2px;
+  }
+  body.mobile-mode .navBtn{
+    min-height:44px;
+  }
+  body.mobile-mode .search-wrap{
+    height:46px;
+  }
+  body.mobile-mode .song{
+    padding:11px 12px;
+    font-size:14px;
+    gap:12px;
+  }
+  body.mobile-mode .songIcon{
+    width:26px;
+    height:26px;
+    font-size:12px;
+  }
+  body.mobile-mode .songDur{
+    font-size:11.5px;
+  }
+  body.mobile-mode .p-top{
+    padding:2px 6px;
+  }
+
+  /* ==== NEW: COVER ==== */
+  .cover-wrap {
+    width: 100%;
+    max-width: 200px;
+    aspect-ratio: 1 / 1;
+    margin: 0 auto;
+    border-radius: 22px;
+    overflow: hidden;
+    background: rgba(15,12,8,.58);
+    backdrop-filter: blur(14px) saturate(180%);
+    box-shadow: inset 0 0 0 1px rgba(var(--c-rgb),.14), inset 0 1px 0 rgba(255,255,255,.14), 0 12px 40px rgba(0,0,0,.45);
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    position: relative;
+  }
+  html[data-theme="light"] .cover-wrap { background: rgba(255,255,255,.55); }
+  html[data-theme="night"] .cover-wrap { background: rgba(10,10,10,.75); }
+  .cover-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .cover-placeholder {
+    font-size: 64px;
+    font-weight: 900;
+    color: rgba(var(--c-rgb),.5);
+    text-shadow: 0 0 24px rgba(var(--c-rgb),.35);
+    line-height: 1;
+  }
+  body.mobile-mode .cover-wrap { max-width: 170px; }
+
+  /* ==== NEW: TEXT BUTTON ==== */
+  .text-btn {
+    width: 100%;
+    height: 42px;
+    border-radius: 14px;
+    background: rgba(var(--c-rgb),.1);
+    box-shadow: inset 0 0 0 1px rgba(var(--c-rgb),.22);
+    color: #f5ede0;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: background .25s ease, transform .15s ease;
+    flex-shrink: 0;
+    padding: 0;
+  }
+  html[data-theme="light"] .text-btn { color: #333; }
+  .text-btn:hover { background: rgba(var(--c-rgb),.2); }
+  .text-btn:active { transform: scale(.97); }
+  .text-btn svg { width: 15px; height: 15px; }
+
+  /* ==== NEW: LYRICS ISLAND ==== */
+  .lyrics-island {
+    width: 100%;
+    padding: 14px 16px;
+    border-radius: 22px;
+    background: rgba(15,12,8,.58);
+    backdrop-filter: blur(14px) saturate(180%);
+    box-shadow: inset 0 0 0 1px var(--ui-border), inset 0 1px 0 rgba(255,255,255,.08), 0 12px 40px rgba(0,0,0,.4);
+    color: var(--ui-text);
+    flex-shrink: 0;
+    max-height: 260px;
+    overflow-y: auto;
+    animation: lyricsSlide .35s ease;
+  }
+  html[data-theme="light"] .lyrics-island { background: rgba(255,255,255,.7); }
+  html[data-theme="night"] .lyrics-island { background: rgba(10,10,10,.75); }
+  @keyframes lyricsSlide { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
+  .lyrics-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    color: var(--ui-text-sub);
+  }
+  .lyrics-header button {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: var(--ui-bg-soft-2);
+    box-shadow: inset 0 0 0 1px var(--ui-border);
+    display: grid;
+    place-items: center;
+    color: var(--ui-text-sub);
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+  .lyrics-header button svg { width: 12px; height: 12px; }
+  .lyrics-content {
+    white-space: pre-wrap;
+    font-size: 13.5px;
+    line-height: 1.6;
+    color: var(--ui-text);
+    font-weight: 500;
+  }
+
+  /* ==== NEW: PLAYER-COL SCROLL ==== */
+  .player-col {
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(var(--c-rgb),.35) transparent;
+    padding-right: 2px;
+  }
+  .player-col::-webkit-scrollbar { width: 6px; }
+  .player-col::-webkit-scrollbar-track { background: transparent; }
+  .player-col::-webkit-scrollbar-thumb { background: rgba(var(--c-rgb),.35); border-radius: 999px; }
+
+  /* ==== NEW: ADMIN MODALS ==== */
+  .admin-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background: rgba(0,0,0,.7);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    overflow-y: auto;
+  }
+  .admin-modal.show { display: flex; }
+  .admin-panel {
+    width: 100%;
+    max-width: 420px;
+    padding: 26px 24px;
+    border-radius: 22px;
+    background: #141010;
+    box-shadow: 0 30px 80px rgba(0,0,0,.6), inset 0 0 0 1px rgba(255,255,255,.08);
+    color: #fff;
+    position: relative;
+    margin: auto;
+  }
+  html[data-theme="light"] .admin-panel { background: #fff; color: #111; }
+  .admin-panel-wide { max-width: 560px; max-height: calc(100vh - 40px); overflow-y: auto; }
+  .admin-close {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: rgba(255,255,255,.08);
+    display: grid;
+    place-items: center;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background .2s ease;
+  }
+  html[data-theme="light"] .admin-close { background: rgba(0,0,0,.06); color: #111; }
+  .admin-close:hover { background: rgba(255,58,138,.25); }
+  .admin-panel h2 {
+    margin: 0 0 8px;
+    font-size: 22px;
+    font-weight: 900;
+    background: linear-gradient(135deg,#fff,#ff3a8a 60%,#4ea8ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    padding-right: 40px;
+  }
+  html[data-theme="light"] .admin-panel h2 {
+    background: linear-gradient(135deg,#333,#ff3a8a 60%,#4ea8ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .admin-sub {
+    font-size: 12.5px;
+    color: rgba(255,255,255,.55);
+    margin: 0 0 18px;
+    font-weight: 500;
+  }
+  html[data-theme="light"] .admin-sub { color: rgba(0,0,0,.55); }
+  .admin-panel h3 {
+    font-size: 14px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1.4px;
+    color: #ff8fc4;
+    margin: 22px 0 12px;
+  }
+  .admin-panel input,
+  .admin-panel textarea,
+  .admin-panel select {
+    width: 100%;
+    padding: 11px 13px;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,.12);
+    background: rgba(255,255,255,.06);
+    color: #fff;
+    font-size: 14px;
+    font-family: inherit;
+    margin-bottom: 10px;
+    outline: none;
+    transition: border-color .2s ease, box-shadow .2s ease;
+  }
+  html[data-theme="light"] .admin-panel input,
+  html[data-theme="light"] .admin-panel textarea,
+  html[data-theme="light"] .admin-panel select {
+    border-color: rgba(0,0,0,.12);
+    background: rgba(0,0,0,.04);
+    color: #111;
+  }
+  .admin-panel input:focus,
+  .admin-panel textarea:focus,
+  .admin-panel select:focus {
+    border-color: rgba(255,58,138,.5);
+    box-shadow: 0 0 0 3px rgba(255,58,138,.15);
+  }
+  .admin-panel textarea { min-height: 90px; resize: vertical; line-height: 1.5; }
+  .admin-panel select {
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path fill='%23ff8fc4' d='M6 8L0 0h12z'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 13px center;
+    padding-right: 34px;
+  }
+  .admin-panel select option { background: #141010; color: #fff; }
+  html[data-theme="light"] .admin-panel select option { background: #fff; color: #111; }
+  .admin-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .admin-row input { margin-bottom: 10px; }
+  .admin-file-label {
+    display: block;
+    padding: 10px 13px;
+    border-radius: 12px;
+    border: 1px dashed rgba(255,255,255,.2);
+    background: rgba(255,255,255,.03);
+    font-size: 12px;
+    color: rgba(255,255,255,.6);
+    cursor: pointer;
+    margin-bottom: 10px;
+    transition: border-color .2s ease, background .2s ease;
+  }
+  html[data-theme="light"] .admin-file-label {
+    border-color: rgba(0,0,0,.2);
+    background: rgba(0,0,0,.02);
+    color: rgba(0,0,0,.6);
+  }
+  .admin-file-label:hover { border-color: rgba(255,58,138,.4); background: rgba(255,58,138,.05); }
+  .admin-file-label span { display: block; margin-bottom: 6px; font-weight: 600; }
+  .admin-file-label input[type="file"] {
+    width: 100%;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: inherit;
+    font-size: 12px;
+    margin: 0;
+  }
+  .admin-btn-primary {
+    width: 100%;
+    padding: 12px;
+    border-radius: 12px;
+    border: 0;
+    background: linear-gradient(135deg,#ff3a8a 0%,#a855f7 100%);
+    color: #fff;
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: .5px;
+    cursor: pointer;
+    transition: transform .15s ease, box-shadow .2s ease;
+    box-shadow: 0 8px 24px rgba(255,58,138,.35);
+    margin-top: 4px;
+  }
+  .admin-btn-primary:hover { transform: translateY(-1px); box-shadow: 0 12px 32px rgba(255,58,138,.45); }
+  .admin-btn-primary:active { transform: scale(.98); }
+  .admin-btn-primary:disabled { opacity: .6; cursor: not-allowed; transform: none; }
+  .admin-error {
+    margin-top: 12px;
+    font-size: 12.5px;
+    color: #ff6b6b;
+    text-align: center;
+    font-weight: 600;
+    min-height: 16px;
+  }
+  .admin-empty {
+    padding: 24px;
+    text-align: center;
+    color: rgba(255,255,255,.4);
+    font-size: 13px;
+    font-weight: 500;
+  }
+  html[data-theme="light"] .admin-empty { color: rgba(0,0,0,.4); }
+  .admin-song-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px;
+    border-radius: 12px;
+    margin-bottom: 6px;
+    background: rgba(255,255,255,.03);
+    transition: background .2s ease;
+  }
+  html[data-theme="light"] .admin-song-item { background: rgba(0,0,0,.03); }
+  .admin-song-item:hover { background: rgba(255,255,255,.06); }
+  .admin-song-item img {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+  .admin-song-cover-placeholder {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    background: rgba(255,58,138,.15);
+    display: grid;
+    place-items: center;
+    color: #ff8fc4;
+    font-size: 18px;
+    font-weight: 900;
+    flex-shrink: 0;
+  }
+  .admin-song-info { flex: 1; min-width: 0; }
+  .admin-song-info b {
+    display: block;
+    font-size: 13.5px;
+    font-weight: 700;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .admin-song-info span { font-size: 11.5px; color: rgba(255,255,255,.5); }
+  html[data-theme="light"] .admin-song-info span { color: rgba(0,0,0,.5); }
+  .admin-song-actions { flex-shrink: 0; }
+  .admin-song-actions button {
+    padding: 7px 12px;
+    border-radius: 8px;
+    border: 0;
+    background: rgba(220,38,38,.15);
+    color: #ff7777;
+    font-size: 11.5px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background .2s ease;
+  }
+  .admin-song-actions button:hover { background: rgba(220,38,38,.3); }
+
   .theme-modal{position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.5);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;padding:24px;opacity:0;visibility:hidden;transition:opacity .3s ease, visibility .3s ease;}
   .theme-modal.show{opacity:1;visibility:visible;}
   .theme-panel{width:100%;max-width:400px;padding:20px;border-radius:22px;background:var(--ui-bg);box-shadow:0 30px 80px rgba(0,0,0,.5),inset 0 0 0 1px var(--ui-border);color:var(--ui-text);transform:translateY(20px) scale(.95);transition:transform .35s cubic-bezier(.2,.8,.2,1);max-height:calc(100vh - 48px);overflow-y:auto;}
@@ -564,6 +990,9 @@
     .intro-btn{padding:17px 44px;font-size:16px;}
     .intro-wrap{gap:40px;padding:20px;}
     .pl-cover{width:56px;height:56px;}
+    .device-card{padding:22px 14px 18px;}
+    .device-icon{font-size:40px;}
+    .device-name{font-size:16px;}
   }
 </style>
 </head>
@@ -592,6 +1021,24 @@
         <span class="intro-btn-text">Начать слушать!</span>
       </button>
     </div>
+
+    <div class="device-wrap" id="deviceWrap">
+      <h2 class="device-title">С какого устройства вы?</h2>
+      <p class="device-sub">Выберите для лучшего опыта</p>
+      <div class="device-options">
+        <button class="device-card" id="devicePC" type="button">
+          <div class="device-icon">🖥️</div>
+          <div class="device-name">ПК</div>
+          <div class="device-desc">Компьютер, ноутбук</div>
+        </button>
+        <button class="device-card" id="deviceMobile" type="button">
+          <div class="device-icon">📱</div>
+          <div class="device-name">Мобильное устройство</div>
+          <div class="device-desc">Смартфон, планшет</div>
+        </button>
+      </div>
+    </div>
+
     <div id="logoIntro">
       <div class="logo-intro-helper">При помощи</div>
       <div class="logo-intro-wrap" id="logoIntroWrap">
@@ -783,6 +1230,12 @@
 
       <div class="library-layout">
         <div class="player-col">
+          <!-- NEW: обложка -->
+          <div class="cover-wrap" id="coverWrap">
+            <img id="coverImg" alt="" style="display:none;">
+            <div class="cover-placeholder" id="coverPlaceholder">♪</div>
+          </div>
+
           <div class="player" id="playerWrap">
             <div class="island" id="island">
               <div class="topRow">
@@ -854,6 +1307,23 @@
             <button class="navBtn" id="nextBtn" type="button" aria-label="Следующая песня">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
             </button>
+          </div>
+
+          <!-- NEW: кнопка Текст -->
+          <button class="text-btn" id="lyricsBtn" type="button">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h12M4 18h8"/></svg>
+            <span>Текст</span>
+          </button>
+
+          <!-- NEW: островок с текстом -->
+          <div class="lyrics-island" id="lyricsIsland" style="display:none;">
+            <div class="lyrics-header">
+              <span>Текст песни</span>
+              <button id="lyricsClose" type="button" aria-label="Закрыть">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+              </button>
+            </div>
+            <div class="lyrics-content" id="lyricsContent">Нет текста</div>
           </div>
         </div>
 
@@ -949,17 +1419,87 @@
   <div class="fx" id="fx" aria-hidden="true"></div>
 </div>
 
+<!-- NEW: admin modals -->
+<div class="admin-modal" id="adminLoginModal">
+  <div class="admin-panel">
+    <button class="admin-close" id="adminLoginClose" type="button" aria-label="Закрыть">✕</button>
+    <h2>Вход</h2>
+    <p class="admin-sub">Введите данные администратора</p>
+    <form id="adminLoginForm">
+      <input type="email" id="adminEmail" placeholder="Email" required autocomplete="username">
+      <input type="password" id="adminPassword" placeholder="Пароль" required autocomplete="current-password">
+      <button type="submit" class="admin-btn-primary">Войти</button>
+    </form>
+    <div class="admin-error" id="adminError"></div>
+  </div>
+</div>
+
+<div class="admin-modal" id="adminPanelModal">
+  <div class="admin-panel admin-panel-wide">
+    <button class="admin-close" id="adminPanelClose" type="button" aria-label="Закрыть">✕</button>
+    <h2>Админ-панель</h2>
+    <p class="admin-sub">Управление песнями</p>
+
+    <h3>Добавить песню</h3>
+    <form id="adminAddSongForm">
+      <div class="admin-row">
+        <input type="text" id="newSongTitle" placeholder="Название" required>
+        <input type="text" id="newSongArtist" placeholder="Исполнитель">
+      </div>
+      <input type="url" id="newSongAudioUrl" placeholder="Ссылка на MP3 (GitHub raw)" required>
+      <select id="newSongPlaylist" required>
+        <option value="kolab">Колаб MAYSKIIIY Zh&amp;Vc</option>
+        <option value="mayskiy" selected>MAYSKIIIY Zh&amp;Vc</option>
+        <option value="victoria">VI€toriA</option>
+      </select>
+      <label class="admin-file-label">
+        <span>Обложка (квадратная, до 2 МБ):</span>
+        <input type="file" id="newSongCoverFile" accept="image/*">
+      </label>
+      <textarea id="newSongLyrics" placeholder="Текст песни (обычный текст)"></textarea>
+      <button type="submit" class="admin-btn-primary">Добавить песню</button>
+    </form>
+
+    <h3>Все песни</h3>
+    <div id="adminSongsList">Загрузка...</div>
+  </div>
+</div>
+
 <audio id="audio" preload="metadata"></audio>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
 (function(){
   'use strict';
+
+  // ==== SUPABASE CONFIG ====
+  // ЗАМЕНИТЕ 'https://ВАШ_ПРОЕКТ.supabase.co' на URL вашего Supabase-проекта
+  // (Supabase → Settings → API → Project URL)
+  const SUPABASE_URL = 'https://pcpfetfmdaaekviqktyj.supabase.co';
+  const SUPABASE_ANON_KEY = 'sb_publishable_5LpHSVNo0zwy_vd5iUrZeA_i_6YoYH6';
+  const ADMIN_USER_ID = '67a920fb-0c98-47be-a192-eab370d8c6e4';
+  const SUPABASE_CONFIGURED = !SUPABASE_URL.includes('ВАШ_ПРОЕКТ');
+
+  let supabaseClient = null;
+  let adminSession = null;
+  let supabaseSongs = [];
+
+  if (SUPABASE_CONFIGURED && window.supabase) {
+    try {
+      supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    } catch(e) {
+      console.warn('Supabase init failed:', e);
+    }
+  } else {
+    console.warn('Supabase не настроен — админ-функции отключены. Укажите SUPABASE_URL.');
+  }
 
   const THEME_KEY = 'mayskiy-theme';
   const FX_MODE_KEY = 'mayskiy-fx-mode';
   const SEASON_KEY = 'mayskiy-season-enabled';
   const VOLUME_KEY = 'mayskiy-volume';
   const SPEED_KEY = 'mayskiy-speed';
+  const DEVICE_MODE_KEY = 'mayskiy-device-mode';
 
   function getSystemTheme(){ return window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'; }
   function applyThemeValue(value){
@@ -974,6 +1514,12 @@
   let seasonEnabled = (function(){ try{ return localStorage.getItem(SEASON_KEY)==='true'; }catch(e){ return false; } })();
   let currentVolume = (function(){ try{ const v=parseFloat(localStorage.getItem(VOLUME_KEY)); return isFinite(v)?v:1; }catch(e){ return 1; } })();
   let currentSpeed = (function(){ try{ const v=parseFloat(localStorage.getItem(SPEED_KEY)); return isFinite(v)?v:1; }catch(e){ return 1; } })();
+
+  function haptic(pattern) {
+    if (typeof pattern === 'undefined') pattern = 8;
+    if (!document.body.classList.contains('mobile-mode')) return;
+    try { if (navigator.vibrate) navigator.vibrate(pattern); } catch(e){}
+  }
 
   const themeModalEl = document.getElementById('themeModal');
   const themeBtn = document.getElementById('themeBtn');
@@ -1064,6 +1610,7 @@
     row.addEventListener('click', (e) => {
       const btn = e.target.closest('.speed-chip');
       if (!btn) return;
+      haptic(6);
       applySpeed(parseFloat(btn.dataset.speed));
     });
   });
@@ -1203,7 +1750,11 @@
   const ECOSYSTEM_SONG = { name:'Ecosystem of Dreams', theme:'dream', party:true, url: BASE + 'Ecosystem%20of%20Dreams%20-%20usesuno.com.mp3' };
   const RARE_SONG_NAME = 'саша и женя';
 
+  const ARSYUSHA_SONG = { name:'Арсюша, ложись спать', theme:'dream', url: VBASE + '%D0%90%D1%80%D1%81%D1%8E%D1%88%D0%B0_%20%D0%BB%D0%BE%D0%B6%D0%B8%D1%81%D1%8C%20%D1%81%D0%BF%D0%B0%D1%82%D1%8C_%20-%20usesuno.com.mp3' };
+  const VIKO_VIKTORIA_SONG = { name:'VIKO и Виктория', theme:'red', url: VBASE + 'VIKO%20%D0%B8%20%D0%92%D0%B8%D0%BA%D1%82%D0%BE%D1%80%D0%B8%D1%8F%20-%20usesuno.com.mp3' };
+
   const SONGS_VICTORIA = [
+    ARSYUSHA_SONG,
     ECOSYSTEM_SONG, NEW_YEAR_SONG,
     { name:'Саша и Женя', theme:'green', url: VBASE+'GigaChat%20%E2%80%93%20%D0%A1%D0%B0%D1%88%D0%B0%20%D0%B8%20%D0%96%D0%B5%D0%BD%D1%8F.mp3' },
     { name:'Анжелочка', theme:'yellow', url: VBASE+'%D0%B0%D0%BD%D0%B6%D0%B5%D0%BB%D0%BE%D1%87%D0%BA%D0%B0_.mp3' },
@@ -1242,6 +1793,7 @@
   ];
 
   const SONGS_KOLAB = [
+    VIKO_VIKTORIA_SONG,
     ECOSYSTEM_SONG, BLIND_SONG,
     { name:'MAYSKIY HERE...', theme:'red', url: BASE+'MAYSKIY%20HERE...%20(1).mp3' },
     { name:'Myrunplay', theme:'red', url: BASE+'Myrunplay%20(1).mp3' },
@@ -1323,20 +1875,26 @@
     { id:'victoria', name:'VI€toriA',                short:'VI€toriA',  accent:'#f59e0b', accent2:'#78350f', songs: sortHymnsFirst(SONGS_VICTORIA) }
   ];
 
-  const NEW_RELEASES_KEY = 'mayskiy_new_releases_shown_at_v5';
+  const NEW_RELEASES_KEY = 'mayskiy_new_releases_shown_at_v6';
   const NEW_RELEASES_TTL = 10 * 24 * 60 * 60 * 1000;
   const NEW_RELEASES = [
-    { name: 'Слепая зона камер', plId: 'kolab', style: 'dark' },
-    { name: 'Но-но-но-новый год', plId: 'mayskiy', style: 'winter' },
-    { name: 'Ecosystem of Dreams', plId: 'victoria', style: 'dream' }
+    { name: 'Арсюша, ложись спать', plId: 'victoria', style: 'dream' },
+    { name: 'VIKO и Виктория', plId: 'mayskiy', style: 'dark' }
   ];
+  const EXPIRED_RELEASES = ['Слепая зона камер', 'Но-но-но-новый год', 'Ecosystem of Dreams'];
 
   function getNewReleasesStartTimes(){
     let stored = {};
     try { stored = JSON.parse(localStorage.getItem(NEW_RELEASES_KEY)) || {}; } catch(e){}
     const now = Date.now();
     let changed = false;
-    NEW_RELEASES.forEach(item => { if (!stored[item.name]){ stored[item.name] = now; changed = true; } });
+    const ELEVEN_DAYS_MS = 11 * 24 * 60 * 60 * 1000;
+    EXPIRED_RELEASES.forEach(name => {
+      if (stored[name] === undefined) { stored[name] = now - ELEVEN_DAYS_MS; changed = true; }
+    });
+    NEW_RELEASES.forEach(item => {
+      if (stored[item.name] === undefined) { stored[item.name] = now; changed = true; }
+    });
     if (changed){ try { localStorage.setItem(NEW_RELEASES_KEY, JSON.stringify(stored)); } catch(e){} }
     return stored;
   }
@@ -1359,7 +1917,6 @@
   const screens = { intro: $('screenIntro'), loading: $('screenLoading'), main: $('screenMain'), player: $('screenPlayer') };
   function showScreen(name){ Object.values(screens).forEach(s => s.classList.remove('active')); screens[name].classList.add('active'); }
 
-  /* ==== Wheel scroll — плавный ==== */
   const mainScrollEl = document.getElementById('screenMain');
   document.addEventListener('wheel', (e) => {
     if (!mainScrollEl || !mainScrollEl.classList.contains('active')) return;
@@ -1400,7 +1957,6 @@
   audioEl.volume = currentVolume;
   audioEl.playbackRate = currentSpeed;
 
-  /* ==== Предзагрузка следующего (без блокировки воспроизведения) ==== */
   const preloaded = new Set();
   let preloadedUrl = null;
   function preloadNext(){
@@ -1412,7 +1968,6 @@
     preloadedUrl = nextSong.url;
     if (preloaded.has(nextSong.url)) return;
     preloaded.add(nextSong.url);
-    /* Просто создаём скрытый Audio — браузер сам положит в HTTP-кэш */
     const p = new Audio();
     p.preload = 'auto';
     p.src = nextSong.url;
@@ -1534,7 +2089,7 @@
           <div class="pl-count">${pl.songs.length} треков</div>
         </div>
         <div class="pl-chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></div>`;
-      btn.addEventListener('click', () => openPlayer(pl.id));
+      btn.addEventListener('click', () => { haptic(10); openPlayer(pl.id); });
       playlistsEl.appendChild(btn);
     });
     buildNewReleases();
@@ -1569,7 +2124,7 @@
         <div class="pl-cover" style="${coverStyle}">${iconSvg}</div>
         <div class="pl-info"><div class="pl-name">${song.name}</div><div class="pl-count">Новинка • ${pl.name}</div></div>
         <div class="pl-chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></div>`;
-      btn.addEventListener('click', () => openSongFromPlaylist(item.plId, item.name));
+      btn.addEventListener('click', () => { haptic(10); openSongFromPlaylist(item.plId, item.name); });
       newReleasesList.appendChild(btn);
     });
   }
@@ -1614,7 +2169,10 @@
   const introTitles = $('introTitles');
   const logoIntro = $('logoIntro');
   const logoIntroWrap = $('logoIntroWrap');
+  const deviceWrap = $('deviceWrap');
   let introStarted = false;
+  let deviceSelected = false;
+
   startBtn.addEventListener('click', (e) => {
     if (introStarted) return; introStarted = true;
     const rect = startBtn.getBoundingClientRect();
@@ -1628,15 +2186,42 @@
     LogoAudio.init(); LogoAudio.playConfirm();
     introTitles.classList.add('fade-out'); startBtn.classList.add('fade-out');
     setTimeout(() => {
+      deviceWrap.classList.add('show');
+    }, 500);
+  });
+
+  function selectDevice(deviceMode){
+    if (deviceSelected) return; deviceSelected = true;
+    haptic(18);
+    try { localStorage.setItem(DEVICE_MODE_KEY, deviceMode); } catch(e){}
+    if (deviceMode === 'mobile') document.body.classList.add('mobile-mode');
+    else document.body.classList.remove('mobile-mode');
+    deviceWrap.classList.remove('show');
+    setTimeout(() => {
       logoIntro.classList.add('show');
       setTimeout(() => {
         logoIntroWrap.classList.remove('play');
         void logoIntroWrap.offsetWidth;
         requestAnimationFrame(() => { logoIntroWrap.classList.add('play'); LogoAudio.playLogo(); });
-        setTimeout(async () => { showScreen('loading'); await runLoadingSequence(); showScreen('main'); buildMainMenu(); }, 2900);
+        setTimeout(async () => {
+          showScreen('loading');
+          await runLoadingSequence();
+          await fetchAndMergeSongs();
+          showScreen('main');
+          buildMainMenu();
+        }, 2900);
       }, 60);
     }, 500);
-  });
+  }
+  $('devicePC').addEventListener('click', () => selectDevice('pc'));
+  $('deviceMobile').addEventListener('click', () => selectDevice('mobile'));
+
+  (function(){
+    try {
+      const saved = localStorage.getItem(DEVICE_MODE_KEY);
+      if (saved === 'mobile') document.body.classList.add('mobile-mode');
+    } catch(e){}
+  })();
 
   const playerScreen = screens.player;
   const mainScreen = screens.main;
@@ -1702,6 +2287,266 @@
   const liveCloseBtn = $('liveClose');
   const liveBtn = $('liveBtn');
 
+  // ==== NEW: cover + lyrics ====
+  const coverImg = document.getElementById('coverImg');
+  const coverPlaceholder = document.getElementById('coverPlaceholder');
+  const lyricsContent = document.getElementById('lyricsContent');
+  const lyricsIsland = document.getElementById('lyricsIsland');
+
+  function updateCoverAndLyrics(song){
+    if (song && song.cover_url) {
+      coverImg.src = song.cover_url;
+      coverImg.style.display = 'block';
+      coverPlaceholder.style.display = 'none';
+    } else {
+      coverImg.style.display = 'none';
+      coverImg.removeAttribute('src');
+      coverPlaceholder.style.display = 'grid';
+    }
+    if (song && song.lyrics && song.lyrics.trim()) {
+      lyricsContent.textContent = song.lyrics;
+    } else {
+      lyricsContent.textContent = 'Нет текста';
+    }
+  }
+
+  document.getElementById('lyricsBtn').addEventListener('click', () => {
+    haptic(8);
+    lyricsIsland.style.display = lyricsIsland.style.display === 'none' ? 'block' : 'none';
+  });
+  document.getElementById('lyricsClose').addEventListener('click', () => {
+    haptic(6);
+    lyricsIsland.style.display = 'none';
+  });
+  playerBack.addEventListener('click', () => {
+    lyricsIsland.style.display = 'none';
+  });
+
+  // ==== NEW: fetch & merge Supabase songs ====
+  async function fetchAndMergeSongs(){
+    if (!supabaseClient) return;
+    try {
+      const { data, error } = await supabaseClient.from('songs').select('*').order('created_at', { ascending: true });
+      if (error) { console.warn('Supabase fetch error:', error); return; }
+      supabaseSongs = data || [];
+
+      PLAYLISTS.forEach(pl => {
+        pl.songs = pl.songs.filter(s => !s._dbId);
+      });
+
+      supabaseSongs.forEach(row => {
+        const songObj = {
+          name: row.title,
+          theme: 'default',
+          url: row.audio_url,
+          cover_url: row.cover_url,
+          lyrics: row.lyrics,
+          _dbId: row.id
+        };
+        const target = PLAYLISTS.find(p => p.id === row.playlist_id);
+        if (target) target.songs.push(songObj);
+        if (row.playlist_id === 'kolab' || row.playlist_id === 'victoria') {
+          const mayskiy = PLAYLISTS.find(p => p.id === 'mayskiy');
+          if (mayskiy) mayskiy.songs.push(songObj);
+        }
+      });
+    } catch(e) {
+      console.warn('fetchAndMergeSongs failed:', e);
+    }
+  }
+
+  // ==== NEW: admin logic ====
+  let secretBuffer = '';
+  document.addEventListener('keydown', (e) => {
+    const tag = (e.target.tagName || '').toLowerCase();
+    if (tag === 'input' || tag === 'textarea' || tag === 'select') {
+      secretBuffer = '';
+      return;
+    }
+    if (e.key >= '0' && e.key <= '9') {
+      secretBuffer = (secretBuffer + e.key).slice(-4);
+      if (secretBuffer === '1988') {
+        secretBuffer = '';
+        openAdminLogin();
+      }
+    } else {
+      secretBuffer = '';
+    }
+  });
+
+  async function openAdminLogin(){
+    if (!supabaseClient) {
+      alert('Supabase не настроен. Укажите SUPABASE_URL в коде.');
+      return;
+    }
+    try {
+      const { data } = await supabaseClient.auth.getSession();
+      if (data && data.session && data.session.user && data.session.user.id === ADMIN_USER_ID) {
+        adminSession = data.session;
+        openAdminPanel();
+        return;
+      }
+    } catch(e) {}
+    document.getElementById('adminError').textContent = '';
+    document.getElementById('adminLoginModal').classList.add('show');
+    setTimeout(() => document.getElementById('adminEmail').focus(), 100);
+  }
+
+  document.getElementById('adminLoginClose').addEventListener('click', () => {
+    document.getElementById('adminLoginModal').classList.remove('show');
+  });
+  document.getElementById('adminLoginModal').addEventListener('click', (e) => {
+    if (e.target.id === 'adminLoginModal') {
+      document.getElementById('adminLoginModal').classList.remove('show');
+    }
+  });
+
+  document.getElementById('adminLoginForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const errEl = document.getElementById('adminError');
+    errEl.textContent = '';
+    const email = document.getElementById('adminEmail').value.trim();
+    const password = document.getElementById('adminPassword').value;
+    try {
+      const { data, error } = await supabaseClient.auth.signInWithPassword({ email, password });
+      if (error) { errEl.textContent = 'Ошибка: ' + error.message; return; }
+      if (data.user.id !== ADMIN_USER_ID) {
+        errEl.textContent = 'Этот аккаунт не является администратором.';
+        await supabaseClient.auth.signOut();
+        return;
+      }
+      adminSession = data.session;
+      document.getElementById('adminLoginModal').classList.remove('show');
+      document.getElementById('adminLoginForm').reset();
+      openAdminPanel();
+    } catch(err) {
+      errEl.textContent = 'Ошибка: ' + err.message;
+    }
+  });
+
+  async function openAdminPanel(){
+    document.getElementById('adminPanelModal').classList.add('show');
+    await renderAdminSongs();
+  }
+
+  document.getElementById('adminPanelClose').addEventListener('click', () => {
+    document.getElementById('adminPanelModal').classList.remove('show');
+  });
+  document.getElementById('adminPanelModal').addEventListener('click', (e) => {
+    if (e.target.id === 'adminPanelModal') {
+      document.getElementById('adminPanelModal').classList.remove('show');
+    }
+  });
+
+  function escapeHtml(str){
+    return String(str || '').replace(/[&<>"']/g, m => ({
+      '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+    }[m]));
+  }
+
+  async function renderAdminSongs(){
+    const container = document.getElementById('adminSongsList');
+    container.innerHTML = 'Загрузка...';
+    try {
+      const { data, error } = await supabaseClient.from('songs').select('*').order('created_at', { ascending: false });
+      if (error) throw error;
+      if (!data || !data.length) {
+        container.innerHTML = '<div class="admin-empty">Пока нет песен.</div>';
+        return;
+      }
+      container.innerHTML = '';
+      const plLabels = { kolab: 'Колаб', mayskiy: 'MAYSKIIIY', victoria: 'VI€toriA' };
+      data.forEach(song => {
+        const el = document.createElement('div');
+        el.className = 'admin-song-item';
+        el.innerHTML = `
+          ${song.cover_url
+            ? `<img src="${song.cover_url}" alt="">`
+            : `<div class="admin-song-cover-placeholder">♪</div>`}
+          <div class="admin-song-info">
+            <b>${escapeHtml(song.title)}</b>
+            <span>${escapeHtml(song.artist || '—')} · ${plLabels[song.playlist_id] || song.playlist_id}</span>
+          </div>
+          <div class="admin-song-actions">
+            <button data-action="delete" type="button">Удалить</button>
+          </div>
+        `;
+        el.querySelector('[data-action="delete"]').addEventListener('click', async () => {
+          if (!confirm(`Удалить «${song.title}»?`)) return;
+          try {
+            if (song.cover_url && song.cover_url.includes('/object/public/covers/')) {
+              const fileName = song.cover_url.split('/covers/')[1];
+              if (fileName) {
+                await supabaseClient.storage.from('covers').remove([fileName]).catch(() => {});
+              }
+            }
+            const { error } = await supabaseClient.from('songs').delete().eq('id', song.id);
+            if (error) throw error;
+            await fetchAndMergeSongs();
+            await renderAdminSongs();
+            if (screens.main.classList.contains('active')) buildMainMenu();
+          } catch(err) {
+            alert('Ошибка удаления: ' + err.message);
+          }
+        });
+        container.appendChild(el);
+      });
+    } catch(err) {
+      container.innerHTML = 'Ошибка: ' + escapeHtml(err.message);
+    }
+  }
+
+  document.getElementById('adminAddSongForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const title = document.getElementById('newSongTitle').value.trim();
+    const artist = document.getElementById('newSongArtist').value.trim();
+    const audioUrl = document.getElementById('newSongAudioUrl').value.trim();
+    const playlistId = document.getElementById('newSongPlaylist').value;
+    const lyrics = document.getElementById('newSongLyrics').value.trim();
+    const coverFile = document.getElementById('newSongCoverFile').files[0];
+    if (!title || !audioUrl) {
+      alert('Заполните название и ссылку на MP3');
+      return;
+    }
+    const submitBtn = e.target.querySelector('button[type="submit"]');
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Добавление...';
+    try {
+      let coverUrl = null;
+      if (coverFile) {
+        if (coverFile.size > 2 * 1024 * 1024) throw new Error('Обложка больше 2 МБ');
+        const fileExt = coverFile.name.split('.').pop() || 'jpg';
+        const filePath = `${Date.now()}_${Math.random().toString(36).slice(2)}.${fileExt}`;
+        const { error: uploadError } = await supabaseClient.storage
+          .from('covers')
+          .upload(filePath, coverFile, { cacheControl: '3600', upsert: false });
+        if (uploadError) throw uploadError;
+        const { data: urlData } = supabaseClient.storage.from('covers').getPublicUrl(filePath);
+        coverUrl = urlData.publicUrl;
+      }
+      const { error } = await supabaseClient.from('songs').insert([{
+        title,
+        artist: artist || null,
+        audio_url: audioUrl,
+        cover_url: coverUrl,
+        lyrics: lyrics || null,
+        playlist_id: playlistId
+      }]);
+      if (error) throw error;
+      e.target.reset();
+      await fetchAndMergeSongs();
+      await renderAdminSongs();
+      if (screens.main.classList.contains('active')) buildMainMenu();
+      alert('Песня добавлена!');
+    } catch(err) {
+      alert('Ошибка: ' + err.message);
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Добавить песню';
+    }
+  });
+
+  // ==== state ====
   let fullPlaylist = null;
   let fullIndex = -1;
   let liveQueue = [];
@@ -1955,7 +2800,7 @@
     const pct = Math.max(0, Math.min(1, (clientX - rect.left) / rect.width));
     const d = audioEl.duration || 0; if (d > 0){ audioEl.currentTime = pct*d; updateFullSeekUI(); }
   }
-  seek.addEventListener('pointerdown', e => { isDraggingSeek = true; seek.classList.add('dragging'); try{ seek.setPointerCapture(e.pointerId); }catch(_){} seekFromPointerFull(e.clientX); e.preventDefault(); });
+  seek.addEventListener('pointerdown', e => { haptic(6); isDraggingSeek = true; seek.classList.add('dragging'); try{ seek.setPointerCapture(e.pointerId); }catch(_){} seekFromPointerFull(e.clientX); e.preventDefault(); });
   seek.addEventListener('pointermove', e => { if (isDraggingSeek){ seekFromPointerFull(e.clientX); e.preventDefault(); } });
   function endSeek(e){ if (!isDraggingSeek) return; isDraggingSeek=false; seek.classList.remove('dragging'); try{ seek.releasePointerCapture(e.pointerId); }catch(_){} }
   seek.addEventListener('pointerup', endSeek); seek.addEventListener('pointercancel', endSeek);
@@ -1965,7 +2810,7 @@
     const pct = Math.max(0, Math.min(1, (clientX - rect.left) / rect.width));
     const d = audioEl.duration || 0; if (d > 0){ audioEl.currentTime = pct*d; updateMiniSeekUI(); }
   }
-  liveSeek.addEventListener('pointerdown', e => { isDraggingMini = true; liveSeek.classList.add('dragging'); try{ liveSeek.setPointerCapture(e.pointerId); }catch(_){} seekFromPointerMini(e.clientX); e.preventDefault(); });
+  liveSeek.addEventListener('pointerdown', e => { haptic(6); isDraggingMini = true; liveSeek.classList.add('dragging'); try{ liveSeek.setPointerCapture(e.pointerId); }catch(_){} seekFromPointerMini(e.clientX); e.preventDefault(); });
   liveSeek.addEventListener('pointermove', e => { if (isDraggingMini){ seekFromPointerMini(e.clientX); e.preventDefault(); } });
   function endSeekMini(e){ if (!isDraggingMini) return; isDraggingMini=false; liveSeek.classList.remove('dragging'); try{ liveSeek.releasePointerCapture(e.pointerId); }catch(_){} }
   liveSeek.addEventListener('pointerup', endSeekMini); liveSeek.addEventListener('pointercancel', endSeekMini);
@@ -1975,7 +2820,7 @@
     const pct = Math.max(0, Math.min(1, (clientX - rect.left) / rect.width));
     const d = audioEl.duration || 0; if (d > 0){ audioEl.currentTime = pct*d; updateMiniPlayerSeekUI(); }
   }
-  miniPlayerSeek.addEventListener('pointerdown', e => { isDraggingMiniPlayer = true; miniPlayerSeek.classList.add('dragging'); try{ miniPlayerSeek.setPointerCapture(e.pointerId); }catch(_){} seekFromPointerMiniPlayer(e.clientX); e.preventDefault(); });
+  miniPlayerSeek.addEventListener('pointerdown', e => { haptic(6); isDraggingMiniPlayer = true; miniPlayerSeek.classList.add('dragging'); try{ miniPlayerSeek.setPointerCapture(e.pointerId); }catch(_){} seekFromPointerMiniPlayer(e.clientX); e.preventDefault(); });
   miniPlayerSeek.addEventListener('pointermove', e => { if (isDraggingMiniPlayer){ seekFromPointerMiniPlayer(e.clientX); e.preventDefault(); } });
   function endMiniPlayerSeek(e){ if (!isDraggingMiniPlayer) return; isDraggingMiniPlayer=false; miniPlayerSeek.classList.remove('dragging'); try{ miniPlayerSeek.releasePointerCapture(e.pointerId); }catch(_){} }
   miniPlayerSeek.addEventListener('pointerup', endMiniPlayerSeek); miniPlayerSeek.addEventListener('pointercancel', endMiniPlayerSeek);
@@ -2015,11 +2860,10 @@
       const durText = (s._duration && isFinite(s._duration)) ? fmtTime(s._duration) : '—:—';
       el.innerHTML = '<div class="songIcon">♪</div><div class="songName"></div><div class="songDur">' + durText + '</div>';
       el.querySelector('.songName').textContent = s.name;
-      el.addEventListener('click', () => { fullIndex = i; currentIndex = i; playFullCurrent(true); });
+      el.addEventListener('click', () => { haptic(8); fullIndex = i; currentIndex = i; playFullCurrent(true); });
       playlistEl.appendChild(el);
     });
     searchInput.value = ''; searchClear.classList.remove('show');
-    /* Лёгкий фоновый «probe» длительностей — последовательно, не мешает воспроизведению */
     const needProbe = [];
     currentQueue.forEach((s, i) => { if (!s._duration) needProbe.push({s, i}); });
     let probeIdx = 0;
@@ -2056,7 +2900,7 @@
     searchClear.classList.toggle('show', !!q);
   }
   searchInput.addEventListener('input', (e) => filterPlaylist(e.target.value));
-  searchClear.addEventListener('click', () => { searchInput.value = ''; filterPlaylist(''); searchInput.focus(); });
+  searchClear.addEventListener('click', () => { haptic(6); searchInput.value = ''; filterPlaylist(''); searchInput.focus(); });
 
   function renderMainSearchResults(q){
     const query = q.trim().toLowerCase();
@@ -2071,13 +2915,13 @@
       const el = document.createElement('div');
       el.style.cssText = 'display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:14px;cursor:pointer;color:var(--ui-text);';
       el.innerHTML = '<div class="pl-cover" style="width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,' + r.pl.accent + ',' + r.pl.accent2 + ');flex-shrink:0;display:grid;place-items:center;color:#fff;font-weight:800;font-size:14px;">♪</div><div style="flex:1;min-width:0;"><div style="font-size:14px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + r.song.name + '</div><div style="font-size:11.5px;font-weight:500;color:var(--ui-text-sub);margin-top:2px;">' + r.pl.name + '</div></div>';
-      el.addEventListener('click', () => { openPlayer(r.pl.id); setTimeout(() => { fullIndex = r.index; currentIndex = r.index; playFullCurrent(true); }, 60); menuSearchInput.value = ''; renderMainSearchResults(''); menuSearchClear.classList.remove('show'); });
+      el.addEventListener('click', () => { haptic(8); openPlayer(r.pl.id); setTimeout(() => { fullIndex = r.index; currentIndex = r.index; playFullCurrent(true); }, 60); menuSearchInput.value = ''; renderMainSearchResults(''); menuSearchClear.classList.remove('show'); });
       wrap.appendChild(el);
     });
     menuSearchResults.innerHTML = ''; menuSearchResults.appendChild(wrap);
   }
   menuSearchInput.addEventListener('input', (e) => { menuSearchClear.classList.toggle('show', !!e.target.value); renderMainSearchResults(e.target.value); });
-  menuSearchClear.addEventListener('click', () => { menuSearchInput.value = ''; renderMainSearchResults(''); menuSearchClear.classList.remove('show'); menuSearchInput.focus(); });
+  menuSearchClear.addEventListener('click', () => { haptic(6); menuSearchInput.value = ''; renderMainSearchResults(''); menuSearchClear.classList.remove('show'); menuSearchInput.focus(); });
 
   function openPlayer(plId){
     if (mode === 'mini'){ liveLastPosition = audioEl.currentTime || 0; liveIndex = currentIndex; audioEl.pause(); mainScreen.classList.remove('live-active'); }
@@ -2092,7 +2936,6 @@
     playFullCurrent(true);
   }
 
-  /* ==== ПРЯМОЕ ВОСПРОИЗВЕДЕНИЕ — без fetch/blob, стрим сразу ==== */
   async function playFullCurrent(autoplay){
     if (fullIndex < 0 || fullIndex >= currentQueue.length) return;
     const song = currentQueue[fullIndex];
@@ -2103,6 +2946,7 @@
     if (song.fx) startFx(song.fx); else clearFx();
     if (song.party) setPartyActive(true); else setPartyActive(false);
     updatePlaylistActive(); scrollToActive(); updateMiniPlayerMeta();
+    updateCoverAndLyrics(song);
     audioEl.src = song.url;
     audioEl.volume = currentVolume;
     audioEl.playbackRate = currentSpeed;
@@ -2117,8 +2961,8 @@
       else audioEl.addEventListener('loadedmetadata', tryPlay, { once:true });
     }
   }
-  function nextTrack(){ if (fullIndex < currentQueue.length - 1){ fullIndex++; currentIndex = fullIndex; playFullCurrent(true); } }
-  function prevTrack(){ if (fullIndex > 0){ fullIndex--; currentIndex = fullIndex; playFullCurrent(true); } else { try{ audioEl.currentTime = 0; }catch(e){} } }
+  function nextTrack(){ if (fullIndex < currentQueue.length - 1){ haptic(8); fullIndex++; currentIndex = fullIndex; playFullCurrent(true); } }
+  function prevTrack(){ if (fullIndex > 0){ haptic(8); fullIndex--; currentIndex = fullIndex; playFullCurrent(true); } else { haptic(6); try{ audioEl.currentTime = 0; }catch(e){} } }
 
   function updateMiniPlayerMeta(){
     if (fullIndex < 0 || fullIndex >= currentQueue.length) return;
@@ -2128,11 +2972,11 @@
   }
   function showMiniPlayer(){ if (fullIndex < 0 || currentQueue.length === 0) return; updateMiniPlayerMeta(); miniPlayer.classList.add('show'); }
   function hideMiniPlayer(){ miniPlayer.classList.remove('show'); }
-  miniPlay.addEventListener('click', () => { if (audioEl.paused){ const p = audioEl.play(); if (p && p.catch) p.catch(()=>{}); } else audioEl.pause(); });
+  miniPlay.addEventListener('click', () => { haptic(8); if (audioEl.paused){ const p = audioEl.play(); if (p && p.catch) p.catch(()=>{}); } else audioEl.pause(); });
   miniPrev.addEventListener('click', prevTrack);
   miniNext.addEventListener('click', nextTrack);
-  miniLoop.addEventListener('click', () => { loopMode = !loopMode; miniLoop.classList.toggle('active', loopMode); });
-  miniOpen.addEventListener('click', () => { if (fullPlaylist) openPlayer(fullPlaylist.id); });
+  miniLoop.addEventListener('click', () => { haptic(8); loopMode = !loopMode; miniLoop.classList.toggle('active', loopMode); });
+  miniOpen.addEventListener('click', () => { haptic(8); if (fullPlaylist) openPlayer(fullPlaylist.id); });
 
   function buildLivePool(){
     const n = liveQueue.length; livePool = [];
@@ -2141,6 +2985,7 @@
     if (livePool.length > 1 && livePool[0] === liveIndex){ [livePool[0], livePool[livePool.length-1]] = [livePool[livePool.length-1], livePool[0]]; }
   }
   function startLiveMode(){
+    haptic(10);
     if (mode === 'full'){ if (liveIndex >= 0) liveLastPosition = audioEl.currentTime || 0; audioEl.pause(); }
     hideMiniPlayer();
     if (liveQueue.length === 0){ liveQueue = uniqueSongs(); livePool = []; }
@@ -2154,6 +2999,7 @@
       liveTitleEl.textContent = song.name;
       if (song.fx) startFx(song.fx); else clearFx();
       if (song.party) setPartyActive(true); else setPartyActive(false);
+      updateCoverAndLyrics(song);
       audioEl.src = song.url;
       audioEl.volume = currentVolume; audioEl.playbackRate = currentSpeed;
       const trySeek = () => { if (liveLastPosition > 0 && isFinite(audioEl.duration) && liveLastPosition < audioEl.duration){ try { audioEl.currentTime = liveLastPosition; } catch(e){} } updateAllSeekUI(); };
@@ -2190,6 +3036,7 @@
     liveTitleEl.textContent = song.name;
     if (song.fx) startFx(song.fx); else clearFx();
     if (song.party) setPartyActive(true); else setPartyActive(false);
+    updateCoverAndLyrics(song);
     try { audioEl.pause(); } catch(e){}
     audioEl.src = song.url;
     audioEl.volume = currentVolume; audioEl.playbackRate = currentSpeed;
@@ -2198,9 +3045,10 @@
     const p = audioEl.play(); if (p && p.catch) p.catch(()=>{});
   }
 
-  playBtn.addEventListener('click', () => { if (fullIndex < 0) return; if (audioEl.paused){ if (audioEl.ended) audioEl.currentTime = 0; const p = audioEl.play(); if (p && p.catch) p.catch(()=>{}); } else audioEl.pause(); });
-  stopBtn.addEventListener('click', () => { audioEl.pause(); try{ audioEl.currentTime = 0; }catch(e){} updateFullSeekUI(); });
+  playBtn.addEventListener('click', () => { haptic(10); if (fullIndex < 0) return; if (audioEl.paused){ if (audioEl.ended) audioEl.currentTime = 0; const p = audioEl.play(); if (p && p.catch) p.catch(()=>{}); } else audioEl.pause(); });
+  stopBtn.addEventListener('click', () => { haptic(8); audioEl.pause(); try{ audioEl.currentTime = 0; }catch(e){} updateFullSeekUI(); });
   downloadBtn.addEventListener('click', async () => {
+    haptic(8);
     if (fullIndex < 0) return;
     const song = currentQueue[fullIndex];
     try {
@@ -2218,6 +3066,7 @@
   nextBtn.addEventListener('click', nextTrack);
 
   playerBack.addEventListener('click', () => {
+    haptic(8);
     clearFx(); setPartyActive(false);
     showScreen('main');
     if (fullIndex >= 0 && currentQueue.length > 0){ showMiniPlayer(); mode = 'idle'; }
@@ -2225,10 +3074,10 @@
   });
 
   liveBtn.addEventListener('click', startLiveMode);
-  liveCloseBtn.addEventListener('click', () => stopLiveMode(true));
-  livePlayBtn.addEventListener('click', () => { if (audioEl.paused){ const p = audioEl.play(); if (p && p.catch) p.catch(()=>{}); } else audioEl.pause(); });
-  livePrevBtn.addEventListener('click', playLivePrev);
-  liveNextBtn.addEventListener('click', playLiveNext);
+  liveCloseBtn.addEventListener('click', () => { haptic(8); stopLiveMode(true); });
+  livePlayBtn.addEventListener('click', () => { haptic(10); if (audioEl.paused){ const p = audioEl.play(); if (p && p.catch) p.catch(()=>{}); } else audioEl.pause(); });
+  livePrevBtn.addEventListener('click', () => { haptic(8); playLivePrev(); });
+  liveNextBtn.addEventListener('click', () => { haptic(8); playLiveNext(); });
 
   if (window.ResizeObserver) new ResizeObserver(layoutRing).observe(island);
   else window.addEventListener('resize', layoutRing);
