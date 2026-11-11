@@ -523,59 +523,51 @@
   .songName{flex:1 1 auto;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
   .songDur{flex:0 0 auto;font-size:10.5px;font-variant-numeric:tabular-nums;opacity:.6;}
 
+  /* ==== MOBILE LAYOUT (fixed scroll) ==== */
   body.mobile-mode .library-layout{
     flex-direction:column;
     gap:12px;
+    overflow:hidden;
+    min-height:0;
   }
   body.mobile-mode .player-col{
     flex:0 0 auto;
     width:100%;
     max-width:100%;
+    max-height:65vh;
+    overflow-y:auto;
+    overflow-x:hidden;
+    -webkit-overflow-scrolling:touch;
+    touch-action:pan-y;
+    overscroll-behavior:contain;
+    padding-right:2px;
   }
   body.mobile-mode .playlist-col{
     flex:1 1 auto;
     min-height:0;
     width:100%;
+    overflow:hidden;
   }
-  body.mobile-mode .island{
-    padding:16px 16px 18px;
-    border-radius:24px;
+  body.mobile-mode .playlist{
+    flex:1;
+    min-height:0;
+    overflow-y:auto;
+    -webkit-overflow-scrolling:touch;
+    touch-action:pan-y;
+    overscroll-behavior:contain;
   }
-  body.mobile-mode .controls .btn{
-    width:44px;
-    height:44px;
-  }
-  body.mobile-mode .controls .btn.play{
-    width:52px;
-    height:52px;
-  }
-  body.mobile-mode .navRow{
-    margin-top:2px;
-  }
-  body.mobile-mode .navBtn{
-    min-height:44px;
-  }
-  body.mobile-mode .search-wrap{
-    height:46px;
-  }
-  body.mobile-mode .song{
-    padding:11px 12px;
-    font-size:14px;
-    gap:12px;
-  }
-  body.mobile-mode .songIcon{
-    width:26px;
-    height:26px;
-    font-size:12px;
-  }
-  body.mobile-mode .songDur{
-    font-size:11.5px;
-  }
-  body.mobile-mode .p-top{
-    padding:2px 6px;
-  }
+  body.mobile-mode .island{padding:16px 16px 18px;border-radius:24px;}
+  body.mobile-mode .controls .btn{width:44px;height:44px;}
+  body.mobile-mode .controls .btn.play{width:52px;height:52px;}
+  body.mobile-mode .navRow{margin-top:2px;}
+  body.mobile-mode .navBtn{min-height:44px;}
+  body.mobile-mode .search-wrap{height:46px;}
+  body.mobile-mode .song{padding:11px 12px;font-size:14px;gap:12px;}
+  body.mobile-mode .songIcon{width:26px;height:26px;font-size:12px;}
+  body.mobile-mode .songDur{font-size:11.5px;}
+  body.mobile-mode .p-top{padding:2px 6px;}
+  body.mobile-mode .cover-wrap{max-width:170px;}
 
-  /* ==== NEW: COVER ==== */
   .cover-wrap {
     width: 100%;
     max-width: 200px;
@@ -594,16 +586,8 @@
   html[data-theme="light"] .cover-wrap { background: rgba(255,255,255,.55); }
   html[data-theme="night"] .cover-wrap { background: rgba(10,10,10,.75); }
   .cover-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
-  .cover-placeholder {
-    font-size: 64px;
-    font-weight: 900;
-    color: rgba(var(--c-rgb),.5);
-    text-shadow: 0 0 24px rgba(var(--c-rgb),.35);
-    line-height: 1;
-  }
-  body.mobile-mode .cover-wrap { max-width: 170px; }
+  .cover-placeholder { font-size: 64px; font-weight: 900; color: rgba(var(--c-rgb),.5); text-shadow: 0 0 24px rgba(var(--c-rgb),.35); line-height: 1; }
 
-  /* ==== NEW: TEXT BUTTON ==== */
   .text-btn {
     width: 100%;
     height: 42px;
@@ -629,7 +613,6 @@
   .text-btn:active { transform: scale(.97); }
   .text-btn svg { width: 15px; height: 15px; }
 
-  /* ==== NEW: LYRICS ISLAND ==== */
   .lyrics-island {
     width: 100%;
     padding: 14px 16px;
@@ -646,58 +629,24 @@
   html[data-theme="light"] .lyrics-island { background: rgba(255,255,255,.7); }
   html[data-theme="night"] .lyrics-island { background: rgba(10,10,10,.75); }
   @keyframes lyricsSlide { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
-  .lyrics-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
-    font-size: 11px;
-    font-weight: 800;
-    letter-spacing: 1.8px;
-    text-transform: uppercase;
-    color: var(--ui-text-sub);
-  }
-  .lyrics-header button {
-    width: 26px;
-    height: 26px;
-    border-radius: 50%;
-    background: var(--ui-bg-soft-2);
-    box-shadow: inset 0 0 0 1px var(--ui-border);
-    display: grid;
-    place-items: center;
-    color: var(--ui-text-sub);
-    cursor: pointer;
-    flex-shrink: 0;
-  }
+  .lyrics-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; font-size: 11px; font-weight: 800; letter-spacing: 1.8px; text-transform: uppercase; color: var(--ui-text-sub); }
+  .lyrics-header button { width: 26px; height: 26px; border-radius: 50%; background: var(--ui-bg-soft-2); box-shadow: inset 0 0 0 1px var(--ui-border); display: grid; place-items: center; color: var(--ui-text-sub); cursor: pointer; flex-shrink: 0; }
   .lyrics-header button svg { width: 12px; height: 12px; }
-  .lyrics-content {
-    white-space: pre-wrap;
-    font-size: 13.5px;
-    line-height: 1.6;
-    color: var(--ui-text);
-    font-weight: 500;
-  }
+  .lyrics-content { white-space: pre-wrap; font-size: 13.5px; line-height: 1.6; color: var(--ui-text); font-weight: 500; }
 
-  /* ==== NEW: PLAYER-COL SCROLL ==== */
-  .player-col {
-    overflow-y: auto;
-    overflow-x: hidden;
-    scrollbar-width: thin;
-    scrollbar-color: rgba(var(--c-rgb),.35) transparent;
-    padding-right: 2px;
-  }
+  .player-col { overflow-y: auto; overflow-x: hidden; scrollbar-width: thin; scrollbar-color: rgba(var(--c-rgb),.35) transparent; padding-right: 2px; }
   .player-col::-webkit-scrollbar { width: 6px; }
   .player-col::-webkit-scrollbar-track { background: transparent; }
   .player-col::-webkit-scrollbar-thumb { background: rgba(var(--c-rgb),.35); border-radius: 999px; }
 
-  /* ==== NEW: ADMIN MODALS ==== */
+  /* ==== ADMIN — PROFESSIONAL REDESIGN ==== */
   .admin-modal {
     position: fixed;
     inset: 0;
     z-index: 1000;
-    background: rgba(0,0,0,.7);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    background: rgba(0,0,0,.85);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
     display: none;
     align-items: center;
     justify-content: center;
@@ -707,153 +656,302 @@
   .admin-modal.show { display: flex; }
   .admin-panel {
     width: 100%;
-    max-width: 420px;
-    padding: 26px 24px;
-    border-radius: 22px;
-    background: #141010;
-    box-shadow: 0 30px 80px rgba(0,0,0,.6), inset 0 0 0 1px rgba(255,255,255,.08);
+    max-width: 440px;
+    padding: 0;
+    border-radius: 24px;
+    background: linear-gradient(180deg, #1a1622 0%, #0d0a12 100%);
+    box-shadow:
+      0 40px 120px rgba(0,0,0,.85),
+      0 0 0 1px rgba(255,255,255,.06),
+      inset 0 1px 0 rgba(255,255,255,.08);
     color: #fff;
     position: relative;
     margin: auto;
+    overflow: hidden;
   }
-  html[data-theme="light"] .admin-panel { background: #fff; color: #111; }
-  .admin-panel-wide { max-width: 560px; max-height: calc(100vh - 40px); overflow-y: auto; }
-  .admin-close {
-    position: absolute;
-    top: 14px;
-    right: 14px;
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    background: rgba(255,255,255,.08);
+  html[data-theme="light"] .admin-panel { background: linear-gradient(180deg,#fff 0%,#f5f5f7 100%); color: #111; }
+  .admin-panel-wide { max-width: 600px; max-height: calc(100vh - 40px); display: flex; flex-direction: column; }
+  .admin-panel-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 24px 24px 20px;
+    border-bottom: 1px solid rgba(255,255,255,.06);
+    position: relative;
+  }
+  html[data-theme="light"] .admin-panel-header { border-bottom-color: rgba(0,0,0,.06); }
+  .admin-badge {
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #ff3a8a, #a855f7);
     display: grid;
     place-items: center;
-    color: #fff;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background .2s ease;
+    flex-shrink: 0;
+    box-shadow: 0 10px 28px rgba(255,58,138,.4);
   }
-  html[data-theme="light"] .admin-close { background: rgba(0,0,0,.06); color: #111; }
-  .admin-close:hover { background: rgba(255,58,138,.25); }
-  .admin-panel h2 {
-    margin: 0 0 8px;
+  .admin-badge svg { width: 24px; height: 24px; color: #fff; }
+  .admin-panel-header-text { flex: 1; min-width: 0; }
+  .admin-panel-title {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 900;
+    letter-spacing: -.4px;
+    background: linear-gradient(135deg,#fff,#ff8fc4 60%,#a7d4ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1.1;
+  }
+  html[data-theme="light"] .admin-panel-title {
+    background: linear-gradient(135deg,#111,#ff3a8a 60%,#4ea8ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .admin-panel-subtitle {
+    margin: 4px 0 0;
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.4);
+  }
+  html[data-theme="light"] .admin-panel-subtitle { color: rgba(0,0,0,.4); }
+  .admin-close {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: rgba(255,255,255,.06);
+    display: grid;
+    place-items: center;
+    color: rgba(255,255,255,.55);
+    cursor: pointer;
+    transition: all .2s ease;
+  }
+  html[data-theme="light"] .admin-close { background: rgba(0,0,0,.05); color: rgba(0,0,0,.55); }
+  .admin-close:hover { background: rgba(255,58,138,.25); color: #fff; transform: rotate(90deg); }
+  .admin-body { padding: 20px 24px 24px; overflow-y: auto; flex: 1; min-height: 0; }
+
+  .admin-panel h2.admin-h2 {
+    margin: 0 0 6px;
     font-size: 22px;
     font-weight: 900;
     background: linear-gradient(135deg,#fff,#ff3a8a 60%,#4ea8ff);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    padding-right: 40px;
   }
-  html[data-theme="light"] .admin-panel h2 {
-    background: linear-gradient(135deg,#333,#ff3a8a 60%,#4ea8ff);
+  html[data-theme="light"] .admin-panel h2.admin-h2 {
+    background: linear-gradient(135deg,#111,#ff3a8a 60%,#4ea8ff);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
   }
   .admin-sub {
-    font-size: 12.5px;
-    color: rgba(255,255,255,.55);
-    margin: 0 0 18px;
+    font-size: 12px;
+    color: rgba(255,255,255,.5);
+    margin: 0 0 20px;
     font-weight: 500;
   }
-  html[data-theme="light"] .admin-sub { color: rgba(0,0,0,.55); }
-  .admin-panel h3 {
-    font-size: 14px;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 1.4px;
-    color: #ff8fc4;
-    margin: 22px 0 12px;
+  html[data-theme="light"] .admin-sub { color: rgba(0,0,0,.5); }
+
+  .admin-section {
+    background: rgba(255,255,255,.02);
+    border: 1px solid rgba(255,255,255,.06);
+    border-radius: 16px;
+    padding: 18px;
+    margin-bottom: 16px;
   }
-  .admin-panel input,
-  .admin-panel textarea,
-  .admin-panel select {
+  html[data-theme="light"] .admin-section { background: rgba(0,0,0,.02); border-color: rgba(0,0,0,.06); }
+  .admin-section-title {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    color: #ff8fc4;
+    margin: 0 0 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .admin-section-title::before {
+    content: '';
+    width: 3px;
+    height: 14px;
+    background: linear-gradient(180deg, #ff3a8a, #a855f7);
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+
+  .admin-panel input[type="text"],
+  .admin-panel input[type="email"],
+  .admin-panel input[type="password"],
+  .admin-panel input[type="url"],
+  .admin-panel textarea {
     width: 100%;
-    padding: 11px 13px;
+    padding: 12px 14px;
     border-radius: 12px;
-    border: 1px solid rgba(255,255,255,.12);
-    background: rgba(255,255,255,.06);
+    border: 1.5px solid rgba(255,255,255,.08);
+    background: rgba(255,255,255,.04);
     color: #fff;
     font-size: 14px;
     font-family: inherit;
     margin-bottom: 10px;
     outline: none;
-    transition: border-color .2s ease, box-shadow .2s ease;
+    transition: border-color .2s ease, box-shadow .2s ease, background .2s ease;
   }
   html[data-theme="light"] .admin-panel input,
-  html[data-theme="light"] .admin-panel textarea,
-  html[data-theme="light"] .admin-panel select {
-    border-color: rgba(0,0,0,.12);
-    background: rgba(0,0,0,.04);
+  html[data-theme="light"] .admin-panel textarea {
+    border-color: rgba(0,0,0,.08);
+    background: rgba(0,0,0,.03);
     color: #111;
   }
   .admin-panel input:focus,
-  .admin-panel textarea:focus,
-  .admin-panel select:focus {
-    border-color: rgba(255,58,138,.5);
+  .admin-panel textarea:focus {
+    border-color: rgba(255,58,138,.6);
+    background: rgba(255,58,138,.05);
     box-shadow: 0 0 0 3px rgba(255,58,138,.15);
   }
-  .admin-panel textarea { min-height: 90px; resize: vertical; line-height: 1.5; }
-  .admin-panel select {
-    cursor: pointer;
-    appearance: none;
-    -webkit-appearance: none;
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path fill='%23ff8fc4' d='M6 8L0 0h12z'/></svg>");
-    background-repeat: no-repeat;
-    background-position: right 13px center;
-    padding-right: 34px;
-  }
-  .admin-panel select option { background: #141010; color: #fff; }
-  html[data-theme="light"] .admin-panel select option { background: #fff; color: #111; }
+  .admin-panel textarea { min-height: 100px; resize: vertical; line-height: 1.5; }
+  .admin-panel input::placeholder,
+  .admin-panel textarea::placeholder { color: rgba(255,255,255,.3); }
+  html[data-theme="light"] .admin-panel input::placeholder,
+  html[data-theme="light"] .admin-panel textarea::placeholder { color: rgba(0,0,0,.3); }
+
   .admin-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-  .admin-row input { margin-bottom: 10px; }
-  .admin-file-label {
-    display: block;
-    padding: 10px 13px;
-    border-radius: 12px;
-    border: 1px dashed rgba(255,255,255,.2);
-    background: rgba(255,255,255,.03);
-    font-size: 12px;
-    color: rgba(255,255,255,.6);
+  @media (max-width: 500px) { .admin-row { grid-template-columns: 1fr; } }
+
+  /* Playlist selector (checkboxes as pills) */
+  .admin-playlists {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+  .admin-playlist-pill {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    border-radius: 999px;
+    background: rgba(255,255,255,.04);
+    border: 1.5px solid rgba(255,255,255,.08);
     cursor: pointer;
+    transition: all .2s ease;
+    user-select: none;
+    font-size: 13px;
+    font-weight: 700;
+    color: rgba(255,255,255,.7);
+  }
+  html[data-theme="light"] .admin-playlist-pill {
+    background: rgba(0,0,0,.03);
+    border-color: rgba(0,0,0,.08);
+    color: rgba(0,0,0,.7);
+  }
+  .admin-playlist-pill:hover {
+    background: rgba(255,255,255,.08);
+    border-color: rgba(255,255,255,.16);
+    color: #fff;
+  }
+  html[data-theme="light"] .admin-playlist-pill:hover { background: rgba(0,0,0,.06); color: #111; }
+  .admin-playlist-pill input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+    width: 0;
+    height: 0;
+  }
+  .admin-playlist-pill input:checked ~ .admin-playlist-pill-dot {
+    background: #ff3a8a;
+    box-shadow: 0 0 10px #ff3a8a;
+  }
+  .admin-playlist-pill:has(input:checked) {
+    background: linear-gradient(135deg, rgba(255,58,138,.18), rgba(168,85,247,.18));
+    border-color: #ff3a8a;
+    color: #fff;
+    box-shadow: 0 4px 18px rgba(255,58,138,.3);
+  }
+  .admin-playlist-pill-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255,255,255,.25);
+    transition: all .2s ease;
+    flex-shrink: 0;
+  }
+  html[data-theme="light"] .admin-playlist-pill-dot { background: rgba(0,0,0,.25); }
+  .admin-playlist-pill-label { font-weight: 700; }
+
+  /* File upload button */
+  .admin-file-btn {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 14px;
+    border-radius: 12px;
+    border: 1.5px dashed rgba(255,255,255,.15);
+    background: rgba(255,255,255,.02);
+    cursor: pointer;
+    transition: all .2s ease;
     margin-bottom: 10px;
-    transition: border-color .2s ease, background .2s ease;
+    color: rgba(255,255,255,.7);
+    font-weight: 600;
   }
-  html[data-theme="light"] .admin-file-label {
-    border-color: rgba(0,0,0,.2);
+  html[data-theme="light"] .admin-file-btn {
+    border-color: rgba(0,0,0,.15);
     background: rgba(0,0,0,.02);
-    color: rgba(0,0,0,.6);
+    color: rgba(0,0,0,.7);
   }
-  .admin-file-label:hover { border-color: rgba(255,58,138,.4); background: rgba(255,58,138,.05); }
-  .admin-file-label span { display: block; margin-bottom: 6px; font-weight: 600; }
-  .admin-file-label input[type="file"] {
-    width: 100%;
-    padding: 0;
-    border: 0;
-    background: transparent;
-    color: inherit;
-    font-size: 12px;
-    margin: 0;
+  .admin-file-btn:hover {
+    border-color: #ff3a8a;
+    background: rgba(255,58,138,.06);
+    color: #fff;
   }
+  html[data-theme="light"] .admin-file-btn:hover { color: #111; }
+  .admin-file-btn input[type="file"] { display: none; }
+  .admin-file-icon {
+    width: 34px;
+    height: 34px;
+    border-radius: 9px;
+    background: linear-gradient(135deg, #ff3a8a, #a855f7);
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    box-shadow: 0 4px 12px rgba(255,58,138,.35);
+  }
+  .admin-file-icon svg { width: 16px; height: 16px; color: #fff; }
+  .admin-file-text { flex: 1; min-width: 0; font-size: 13px; }
+  .admin-file-text small { display: block; font-size: 11px; opacity: .6; font-weight: 500; margin-top: 2px; }
+
   .admin-btn-primary {
     width: 100%;
-    padding: 12px;
+    padding: 13px;
     border-radius: 12px;
     border: 0;
-    background: linear-gradient(135deg,#ff3a8a 0%,#a855f7 100%);
+    background: linear-gradient(135deg, #ff3a8a 0%, #a855f7 100%);
     color: #fff;
     font-size: 14px;
     font-weight: 800;
     letter-spacing: .5px;
     cursor: pointer;
     transition: transform .15s ease, box-shadow .2s ease;
-    box-shadow: 0 8px 24px rgba(255,58,138,.35);
+    box-shadow: 0 8px 24px rgba(255,58,138,.4);
     margin-top: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
   }
-  .admin-btn-primary:hover { transform: translateY(-1px); box-shadow: 0 12px 32px rgba(255,58,138,.45); }
+  .admin-btn-primary:hover { transform: translateY(-1px); box-shadow: 0 12px 32px rgba(255,58,138,.5); }
   .admin-btn-primary:active { transform: scale(.98); }
   .admin-btn-primary:disabled { opacity: .6; cursor: not-allowed; transform: none; }
+  .admin-btn-primary svg { width: 16px; height: 16px; }
+
   .admin-error {
     margin-top: 12px;
     font-size: 12.5px;
@@ -863,68 +961,136 @@
     min-height: 16px;
   }
   .admin-empty {
-    padding: 24px;
+    padding: 32px 20px;
     text-align: center;
     color: rgba(255,255,255,.4);
     font-size: 13px;
     font-weight: 500;
+    line-height: 1.6;
   }
   html[data-theme="light"] .admin-empty { color: rgba(0,0,0,.4); }
+  .admin-empty svg { display: block; margin: 0 auto 12px; width: 42px; height: 42px; opacity: .35; }
+
   .admin-song-item {
     display: flex;
     align-items: center;
-    gap: 12px;
-    padding: 10px;
-    border-radius: 12px;
-    margin-bottom: 6px;
+    gap: 14px;
+    padding: 12px;
+    border-radius: 14px;
+    margin-bottom: 8px;
     background: rgba(255,255,255,.03);
-    transition: background .2s ease;
+    border: 1px solid rgba(255,255,255,.05);
+    transition: all .2s ease;
   }
-  html[data-theme="light"] .admin-song-item { background: rgba(0,0,0,.03); }
-  .admin-song-item:hover { background: rgba(255,255,255,.06); }
+  html[data-theme="light"] .admin-song-item { background: rgba(0,0,0,.02); border-color: rgba(0,0,0,.05); }
+  .admin-song-item:hover {
+    background: rgba(255,255,255,.06);
+    border-color: rgba(255,255,255,.1);
+  }
+  html[data-theme="light"] .admin-song-item:hover { background: rgba(0,0,0,.04); border-color: rgba(0,0,0,.1); }
   .admin-song-item img {
-    width: 44px;
-    height: 44px;
-    border-radius: 10px;
+    width: 48px;
+    height: 48px;
+    border-radius: 11px;
     object-fit: cover;
     flex-shrink: 0;
+    box-shadow: 0 4px 12px rgba(0,0,0,.3);
   }
   .admin-song-cover-placeholder {
-    width: 44px;
-    height: 44px;
-    border-radius: 10px;
-    background: rgba(255,58,138,.15);
+    width: 48px;
+    height: 48px;
+    border-radius: 11px;
+    background: linear-gradient(135deg, rgba(255,58,138,.25), rgba(168,85,247,.25));
     display: grid;
     place-items: center;
     color: #ff8fc4;
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 900;
     flex-shrink: 0;
+    box-shadow: 0 4px 12px rgba(0,0,0,.2);
   }
   .admin-song-info { flex: 1; min-width: 0; }
   .admin-song-info b {
     display: block;
-    font-size: 13.5px;
+    font-size: 14px;
     font-weight: 700;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    color: #fff;
   }
-  .admin-song-info span { font-size: 11.5px; color: rgba(255,255,255,.5); }
-  html[data-theme="light"] .admin-song-info span { color: rgba(0,0,0,.5); }
-  .admin-song-actions { flex-shrink: 0; }
+  html[data-theme="light"] .admin-song-info b { color: #111; }
+  .admin-song-info .admin-song-artist {
+    display: block;
+    font-size: 12px;
+    color: rgba(255,255,255,.5);
+    margin-top: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  html[data-theme="light"] .admin-song-info .admin-song-artist { color: rgba(0,0,0,.5); }
+  .admin-song-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-top: 6px;
+  }
+  .admin-song-badge {
+    font-size: 9.5px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 999px;
+    background: rgba(255,58,138,.15);
+    color: #ff8fc4;
+    border: 1px solid rgba(255,58,138,.3);
+    text-transform: uppercase;
+    letter-spacing: .5px;
+  }
+  .admin-song-actions { flex-shrink: 0; display: flex; gap: 6px; }
   .admin-song-actions button {
-    padding: 7px 12px;
-    border-radius: 8px;
+    padding: 8px 12px;
+    border-radius: 9px;
     border: 0;
-    background: rgba(220,38,38,.15);
-    color: #ff7777;
+    background: rgba(220,38,38,.12);
+    color: #ff8888;
     font-size: 11.5px;
     font-weight: 700;
     cursor: pointer;
-    transition: background .2s ease;
+    transition: all .2s ease;
+    display: flex;
+    align-items: center;
+    gap: 4px;
   }
-  .admin-song-actions button:hover { background: rgba(220,38,38,.3); }
+  .admin-song-actions button:hover { background: rgba(220,38,38,.25); color: #fff; }
+  .admin-song-actions button svg { width: 12px; height: 12px; }
+
+  .admin-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+  .admin-toolbar .admin-section-title { margin: 0; }
+  .admin-refresh-btn {
+    padding: 7px 12px;
+    border-radius: 9px;
+    background: rgba(255,255,255,.05);
+    border: 1px solid rgba(255,255,255,.08);
+    color: rgba(255,255,255,.7);
+    font-size: 11.5px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all .2s ease;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  html[data-theme="light"] .admin-refresh-btn { background: rgba(0,0,0,.03); border-color: rgba(0,0,0,.08); color: rgba(0,0,0,.7); }
+  .admin-refresh-btn:hover { background: rgba(255,255,255,.1); color: #fff; }
+  html[data-theme="light"] .admin-refresh-btn:hover { background: rgba(0,0,0,.06); color: #111; }
+  .admin-refresh-btn svg { width: 12px; height: 12px; }
 
   .theme-modal{position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.5);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;padding:24px;opacity:0;visibility:hidden;transition:opacity .3s ease, visibility .3s ease;}
   .theme-modal.show{opacity:1;visibility:visible;}
@@ -1230,7 +1396,6 @@
 
       <div class="library-layout">
         <div class="player-col">
-          <!-- NEW: обложка -->
           <div class="cover-wrap" id="coverWrap">
             <img id="coverImg" alt="" style="display:none;">
             <div class="cover-placeholder" id="coverPlaceholder">♪</div>
@@ -1309,13 +1474,11 @@
             </button>
           </div>
 
-          <!-- NEW: кнопка Текст -->
           <button class="text-btn" id="lyricsBtn" type="button">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h12M4 18h8"/></svg>
             <span>Текст</span>
           </button>
 
-          <!-- NEW: островок с текстом -->
           <div class="lyrics-island" id="lyricsIsland" style="display:none;">
             <div class="lyrics-header">
               <span>Текст песни</span>
@@ -1344,7 +1507,6 @@
   <div class="theme-modal" id="themeModal">
     <div class="theme-panel">
       <h3>Настройки</h3>
-
       <div class="theme-section-title">Тема оформления</div>
       <div class="theme-option" data-theme-value="dark">
         <div class="theme-option-icon dark"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg></div>
@@ -1362,7 +1524,6 @@
         <div class="theme-option-icon system"><svg viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="4" width="18" height="12" rx="2" fill="currentColor" opacity=".35"/><rect x="3" y="4" width="9" height="12" rx="2" fill="currentColor"/></svg></div>
         <div class="theme-option-label">Системная</div><div class="theme-option-check">✓</div>
       </div>
-
       <div class="theme-section-title">Режим эффектов</div>
       <div class="theme-option" data-fx-mode="ultra">
         <div class="theme-option-icon ultra">✨</div>
@@ -1379,14 +1540,12 @@
         <div style="flex:1;min-width:0;"><div class="theme-option-label">Mega-эконом</div><div class="theme-option-desc">60 Hz · монолитный 2D · нулевые эффекты</div></div>
         <div class="theme-option-check">✓</div>
       </div>
-
       <div class="theme-section-title">Времена года</div>
       <div class="theme-option" data-season-toggle>
         <div class="theme-option-icon season">🌍</div>
         <div style="flex:1;min-width:0;"><div class="theme-option-label">Авто-сезоны</div><div class="theme-option-desc" id="seasonDesc">Дождь, снег, солнце — по месяцу в Москве</div></div>
         <label class="switch" onclick="event.stopPropagation()"><input type="checkbox" id="seasonToggle"><span class="switch-slider"></span></label>
       </div>
-
       <div class="theme-section-title">Громкость</div>
       <div class="settings-volume">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3Z"/><path d="M16 8.5a4 4 0 0 1 0 7" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/><path d="M19 5.5a8 8 0 0 1 0 13" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
@@ -1419,49 +1578,107 @@
   <div class="fx" id="fx" aria-hidden="true"></div>
 </div>
 
-<!-- NEW: admin modals -->
+<!-- ADMIN LOGIN MODAL -->
 <div class="admin-modal" id="adminLoginModal">
   <div class="admin-panel">
-    <button class="admin-close" id="adminLoginClose" type="button" aria-label="Закрыть">✕</button>
-    <h2>Вход</h2>
-    <p class="admin-sub">Введите данные администратора</p>
-    <form id="adminLoginForm">
-      <input type="email" id="adminEmail" placeholder="Email" required autocomplete="username">
-      <input type="password" id="adminPassword" placeholder="Пароль" required autocomplete="current-password">
-      <button type="submit" class="admin-btn-primary">Войти</button>
-    </form>
-    <div class="admin-error" id="adminError"></div>
+    <div class="admin-panel-header">
+      <div class="admin-badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/><circle cx="12" cy="16" r="1.5" fill="currentColor"/></svg>
+      </div>
+      <div class="admin-panel-header-text">
+        <h2 class="admin-panel-title">Вход</h2>
+        <p class="admin-panel-subtitle">Admin access only</p>
+      </div>
+      <button class="admin-close" id="adminLoginClose" type="button" aria-label="Закрыть">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+    <div class="admin-body">
+      <p class="admin-sub">Введите данные администратора Supabase</p>
+      <form id="adminLoginForm">
+        <input type="email" id="adminEmail" placeholder="Email" required autocomplete="username">
+        <input type="password" id="adminPassword" placeholder="Пароль" required autocomplete="current-password">
+        <button type="submit" class="admin-btn-primary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><path d="M10 17l5-5-5-5"/><path d="M15 12H3"/></svg>
+          Войти
+        </button>
+      </form>
+      <div class="admin-error" id="adminError"></div>
+    </div>
   </div>
 </div>
 
+<!-- ADMIN PANEL MODAL -->
 <div class="admin-modal" id="adminPanelModal">
   <div class="admin-panel admin-panel-wide">
-    <button class="admin-close" id="adminPanelClose" type="button" aria-label="Закрыть">✕</button>
-    <h2>Админ-панель</h2>
-    <p class="admin-sub">Управление песнями</p>
-
-    <h3>Добавить песню</h3>
-    <form id="adminAddSongForm">
-      <div class="admin-row">
-        <input type="text" id="newSongTitle" placeholder="Название" required>
-        <input type="text" id="newSongArtist" placeholder="Исполнитель">
+    <div class="admin-panel-header">
+      <div class="admin-badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
       </div>
-      <input type="url" id="newSongAudioUrl" placeholder="Ссылка на MP3 (GitHub raw)" required>
-      <select id="newSongPlaylist" required>
-        <option value="kolab">Колаб MAYSKIIIY Zh&amp;Vc</option>
-        <option value="mayskiy" selected>MAYSKIIIY Zh&amp;Vc</option>
-        <option value="victoria">VI€toriA</option>
-      </select>
-      <label class="admin-file-label">
-        <span>Обложка (квадратная, до 2 МБ):</span>
-        <input type="file" id="newSongCoverFile" accept="image/*">
-      </label>
-      <textarea id="newSongLyrics" placeholder="Текст песни (обычный текст)"></textarea>
-      <button type="submit" class="admin-btn-primary">Добавить песню</button>
-    </form>
+      <div class="admin-panel-header-text">
+        <h2 class="admin-panel-title">Админ-панель</h2>
+        <p class="admin-panel-subtitle">MAYSKIIIY · Content Manager</p>
+      </div>
+      <button class="admin-close" id="adminPanelClose" type="button" aria-label="Закрыть">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+    <div class="admin-body">
+      <div class="admin-section">
+        <h3 class="admin-section-title">Добавить песню</h3>
+        <form id="adminAddSongForm">
+          <div class="admin-row">
+            <input type="text" id="newSongTitle" placeholder="Название" required>
+            <input type="text" id="newSongArtist" placeholder="Исполнитель">
+          </div>
+          <input type="url" id="newSongAudioUrl" placeholder="Ссылка на MP3 (GitHub raw)" required>
+          <div style="font-size:11px;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:8px;">Плейлисты</div>
+          <div class="admin-playlists">
+            <label class="admin-playlist-pill">
+              <input type="checkbox" name="playlist" value="kolab">
+              <span class="admin-playlist-pill-dot"></span>
+              <span class="admin-playlist-pill-label">Колаб</span>
+            </label>
+            <label class="admin-playlist-pill">
+              <input type="checkbox" name="playlist" value="mayskiy" checked>
+              <span class="admin-playlist-pill-dot"></span>
+              <span class="admin-playlist-pill-label">MAYSKIIIY</span>
+            </label>
+            <label class="admin-playlist-pill">
+              <input type="checkbox" name="playlist" value="victoria">
+              <span class="admin-playlist-pill-dot"></span>
+              <span class="admin-playlist-pill-label">VI€toriA</span>
+            </label>
+          </div>
+          <label class="admin-file-btn" for="newSongCoverFile">
+            <div class="admin-file-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5" fill="currentColor"/><path d="M21 15l-5-5L5 21"/></svg>
+            </div>
+            <div class="admin-file-text">
+              <span id="coverFileLabel">Обложка песни</span>
+              <small>PNG, JPG · до 2 МБ · квадратная</small>
+            </div>
+            <input type="file" id="newSongCoverFile" accept="image/*">
+          </label>
+          <textarea id="newSongLyrics" placeholder="Текст песни (обычный текст, без форматирования)"></textarea>
+          <button type="submit" class="admin-btn-primary">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+            Добавить песню
+          </button>
+        </form>
+      </div>
 
-    <h3>Все песни</h3>
-    <div id="adminSongsList">Загрузка...</div>
+      <div class="admin-section">
+        <div class="admin-toolbar">
+          <h3 class="admin-section-title" style="margin:0;">Все песни</h3>
+          <button type="button" class="admin-refresh-btn" id="adminRefreshBtn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-3-6.7L21 8"/><path d="M21 3v5h-5"/></svg>
+            Обновить
+          </button>
+        </div>
+        <div id="adminSongsList">Загрузка...</div>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -1472,26 +1689,24 @@
 (function(){
   'use strict';
 
-  // ==== SUPABASE CONFIG ====
-  // ЗАМЕНИТЕ 'https://ВАШ_ПРОЕКТ.supabase.co' на URL вашего Supabase-проекта
-  // (Supabase → Settings → API → Project URL)
+  // ============ SUPABASE CONFIG ============
   const SUPABASE_URL = 'https://pcpfetfmdaaekviqktyj.supabase.co';
   const SUPABASE_ANON_KEY = 'sb_publishable_5LpHSVNo0zwy_vd5iUrZeA_i_6YoYH6';
   const ADMIN_USER_ID = '67a920fb-0c98-47be-a192-eab370d8c6e4';
-  const SUPABASE_CONFIGURED = !SUPABASE_URL.includes('ВАШ_ПРОЕКТ');
 
   let supabaseClient = null;
   let adminSession = null;
   let supabaseSongs = [];
 
-  if (SUPABASE_CONFIGURED && window.supabase) {
+  if (window.supabase) {
     try {
       supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+      console.log('[Supabase] initialized:', SUPABASE_URL);
     } catch(e) {
-      console.warn('Supabase init failed:', e);
+      console.warn('[Supabase] init failed:', e);
     }
   } else {
-    console.warn('Supabase не настроен — админ-функции отключены. Укажите SUPABASE_URL.');
+    console.warn('[Supabase] library not loaded');
   }
 
   const THEME_KEY = 'mayskiy-theme';
@@ -1754,8 +1969,7 @@
   const VIKO_VIKTORIA_SONG = { name:'VIKO и Виктория', theme:'red', url: VBASE + 'VIKO%20%D0%B8%20%D0%92%D0%B8%D0%BA%D1%82%D0%BE%D1%80%D0%B8%D1%8F%20-%20usesuno.com.mp3' };
 
   const SONGS_VICTORIA = [
-    ARSYUSHA_SONG,
-    ECOSYSTEM_SONG, NEW_YEAR_SONG,
+    ARSYUSHA_SONG, ECOSYSTEM_SONG, NEW_YEAR_SONG,
     { name:'Саша и Женя', theme:'green', url: VBASE+'GigaChat%20%E2%80%93%20%D0%A1%D0%B0%D1%88%D0%B0%20%D0%B8%20%D0%96%D0%B5%D0%BD%D1%8F.mp3' },
     { name:'Анжелочка', theme:'yellow', url: VBASE+'%D0%B0%D0%BD%D0%B6%D0%B5%D0%BB%D0%BE%D1%87%D0%BA%D0%B0_.mp3' },
     { name:'Ля-Ля-Ля-Ля', theme:'yellow', url: VBASE+'GigaChat%20%E2%80%93%20%D0%92%D0%B5%D1%87%D0%BD%D0%BE%20%D0%BD%D0%B0%D0%BC%20%D0%BC%D0%B0%D0%BB%D0%BE%20%D0%BB%D1%8F-%D0%BB%D1%8F-%D0%BB%D1%8F%20%D0%B4%D0%BE%D0%BC%D0%BE%D0%B8%CC%86%20%D0%B2%D0%BC%D0%B5%D1%81%D1%82%D0%B5.mp3' },
@@ -1793,8 +2007,7 @@
   ];
 
   const SONGS_KOLAB = [
-    VIKO_VIKTORIA_SONG,
-    ECOSYSTEM_SONG, BLIND_SONG,
+    VIKO_VIKTORIA_SONG, ECOSYSTEM_SONG, BLIND_SONG,
     { name:'MAYSKIY HERE...', theme:'red', url: BASE+'MAYSKIY%20HERE...%20(1).mp3' },
     { name:'Myrunplay', theme:'red', url: BASE+'Myrunplay%20(1).mp3' },
     { name:'Mayskiy Europa', theme:'red', url: BASE+'mayskiy_europa.mp3' },
@@ -2185,9 +2398,7 @@
     startBtn.appendChild(ripple); setTimeout(() => ripple.remove(), 750);
     LogoAudio.init(); LogoAudio.playConfirm();
     introTitles.classList.add('fade-out'); startBtn.classList.add('fade-out');
-    setTimeout(() => {
-      deviceWrap.classList.add('show');
-    }, 500);
+    setTimeout(() => { deviceWrap.classList.add('show'); }, 500);
   });
 
   function selectDevice(deviceMode){
@@ -2287,7 +2498,6 @@
   const liveCloseBtn = $('liveClose');
   const liveBtn = $('liveBtn');
 
-  // ==== NEW: cover + lyrics ====
   const coverImg = document.getElementById('coverImg');
   const coverPlaceholder = document.getElementById('coverPlaceholder');
   const lyricsContent = document.getElementById('lyricsContent');
@@ -2318,44 +2528,57 @@
     haptic(6);
     lyricsIsland.style.display = 'none';
   });
-  playerBack.addEventListener('click', () => {
-    lyricsIsland.style.display = 'none';
-  });
 
-  // ==== NEW: fetch & merge Supabase songs ====
+  // ============ SUPABASE SONGS MERGE ============
   async function fetchAndMergeSongs(){
-    if (!supabaseClient) return;
+    if (!supabaseClient) {
+      console.warn('[fetch] no supabase client');
+      return;
+    }
     try {
       const { data, error } = await supabaseClient.from('songs').select('*').order('created_at', { ascending: true });
-      if (error) { console.warn('Supabase fetch error:', error); return; }
+      if (error) {
+        console.warn('[Supabase] fetch error:', error);
+        return;
+      }
       supabaseSongs = data || [];
+      console.log('[Supabase] fetched songs:', supabaseSongs.length);
 
+      // Strip previous Supabase songs
       PLAYLISTS.forEach(pl => {
         pl.songs = pl.songs.filter(s => !s._dbId);
       });
 
+      // Re-add current
       supabaseSongs.forEach(row => {
+        const ids = row.playlist_ids && row.playlist_ids.length
+          ? row.playlist_ids
+          : (row.playlist_id ? [row.playlist_id] : ['mayskiy']);
         const songObj = {
           name: row.title,
           theme: 'default',
           url: row.audio_url,
           cover_url: row.cover_url,
           lyrics: row.lyrics,
-          _dbId: row.id
+          _dbId: row.id,
+          _playlists: ids
         };
-        const target = PLAYLISTS.find(p => p.id === row.playlist_id);
-        if (target) target.songs.push(songObj);
-        if (row.playlist_id === 'kolab' || row.playlist_id === 'victoria') {
-          const mayskiy = PLAYLISTS.find(p => p.id === 'mayskiy');
-          if (mayskiy) mayskiy.songs.push(songObj);
+        ids.forEach(pid => {
+          const target = PLAYLISTS.find(p => p.id === pid);
+          if (target) target.songs.push(songObj);
+        });
+        // Also auto-include in mayskiy if in kolab or victoria
+        if ((ids.includes('kolab') || ids.includes('victoria')) && !ids.includes('mayskiy')) {
+          const mays = PLAYLISTS.find(p => p.id === 'mayskiy');
+          if (mays && !mays.songs.find(s => s.url === songObj.url)) mays.songs.push(songObj);
         }
       });
     } catch(e) {
-      console.warn('fetchAndMergeSongs failed:', e);
+      console.warn('[fetch] failed:', e);
     }
   }
 
-  // ==== NEW: admin logic ====
+  // ============ ADMIN LOGIC ============
   let secretBuffer = '';
   document.addEventListener('keydown', (e) => {
     const tag = (e.target.tagName || '').toLowerCase();
@@ -2376,7 +2599,7 @@
 
   async function openAdminLogin(){
     if (!supabaseClient) {
-      alert('Supabase не настроен. Укажите SUPABASE_URL в коде.');
+      alert('Supabase не настроен. Проверьте SUPABASE_URL.');
       return;
     }
     try {
@@ -2396,9 +2619,7 @@
     document.getElementById('adminLoginModal').classList.remove('show');
   });
   document.getElementById('adminLoginModal').addEventListener('click', (e) => {
-    if (e.target.id === 'adminLoginModal') {
-      document.getElementById('adminLoginModal').classList.remove('show');
-    }
+    if (e.target.id === 'adminLoginModal') document.getElementById('adminLoginModal').classList.remove('show');
   });
 
   document.getElementById('adminLoginForm').addEventListener('submit', async (e) => {
@@ -2433,42 +2654,50 @@
     document.getElementById('adminPanelModal').classList.remove('show');
   });
   document.getElementById('adminPanelModal').addEventListener('click', (e) => {
-    if (e.target.id === 'adminPanelModal') {
-      document.getElementById('adminPanelModal').classList.remove('show');
-    }
+    if (e.target.id === 'adminPanelModal') document.getElementById('adminPanelModal').classList.remove('show');
+  });
+  document.getElementById('adminRefreshBtn').addEventListener('click', async () => {
+    await renderAdminSongs();
   });
 
   function escapeHtml(str){
-    return String(str || '').replace(/[&<>"']/g, m => ({
-      '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
-    }[m]));
+    return String(str || '').replace(/[&<>"']/g, m => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[m]));
   }
 
   async function renderAdminSongs(){
     const container = document.getElementById('adminSongsList');
-    container.innerHTML = 'Загрузка...';
+    container.innerHTML = '<div style="padding:16px;text-align:center;font-size:13px;color:rgba(255,255,255,.5);">Загрузка…</div>';
+    if (!supabaseClient) {
+      container.innerHTML = '<div class="admin-empty">Supabase не подключён</div>';
+      return;
+    }
     try {
       const { data, error } = await supabaseClient.from('songs').select('*').order('created_at', { ascending: false });
       if (error) throw error;
       if (!data || !data.length) {
-        container.innerHTML = '<div class="admin-empty">Пока нет песен.</div>';
+        container.innerHTML = '<div class="admin-empty"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>Пока нет песен.<br>Добавьте первую песню выше.</div>';
         return;
       }
       container.innerHTML = '';
       const plLabels = { kolab: 'Колаб', mayskiy: 'MAYSKIIIY', victoria: 'VI€toriA' };
       data.forEach(song => {
+        const ids = song.playlist_ids && song.playlist_ids.length ? song.playlist_ids : (song.playlist_id ? [song.playlist_id] : ['mayskiy']);
         const el = document.createElement('div');
         el.className = 'admin-song-item';
         el.innerHTML = `
-          ${song.cover_url
-            ? `<img src="${song.cover_url}" alt="">`
-            : `<div class="admin-song-cover-placeholder">♪</div>`}
+          ${song.cover_url ? `<img src="${song.cover_url}" alt="">` : `<div class="admin-song-cover-placeholder">♪</div>`}
           <div class="admin-song-info">
             <b>${escapeHtml(song.title)}</b>
-            <span>${escapeHtml(song.artist || '—')} · ${plLabels[song.playlist_id] || song.playlist_id}</span>
+            <span class="admin-song-artist">${escapeHtml(song.artist || '—')}</span>
+            <div class="admin-song-badges">
+              ${ids.map(pid => `<span class="admin-song-badge">${plLabels[pid] || pid}</span>`).join('')}
+            </div>
           </div>
           <div class="admin-song-actions">
-            <button data-action="delete" type="button">Удалить</button>
+            <button data-action="delete" type="button" title="Удалить">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M8 6V4a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg>
+              Удалить
+            </button>
           </div>
         `;
         el.querySelector('[data-action="delete"]').addEventListener('click', async () => {
@@ -2476,9 +2705,7 @@
           try {
             if (song.cover_url && song.cover_url.includes('/object/public/covers/')) {
               const fileName = song.cover_url.split('/covers/')[1];
-              if (fileName) {
-                await supabaseClient.storage.from('covers').remove([fileName]).catch(() => {});
-              }
+              if (fileName) await supabaseClient.storage.from('covers').remove([fileName]).catch(() => {});
             }
             const { error } = await supabaseClient.from('songs').delete().eq('id', song.id);
             if (error) throw error;
@@ -2492,25 +2719,35 @@
         container.appendChild(el);
       });
     } catch(err) {
-      container.innerHTML = 'Ошибка: ' + escapeHtml(err.message);
+      console.error('[admin] render error:', err);
+      container.innerHTML = '<div class="admin-empty" style="color:#ff6b6b;">Ошибка: ' + escapeHtml(err.message || String(err)) + '</div>';
     }
   }
+
+  // Cover file label update
+  document.getElementById('newSongCoverFile').addEventListener('change', (e) => {
+    const file = e.target.files[0];
+    const label = document.getElementById('coverFileLabel');
+    if (file && label) label.textContent = file.name.length > 32 ? file.name.slice(0, 29) + '...' : file.name;
+    else if (label) label.textContent = 'Обложка песни';
+  });
 
   document.getElementById('adminAddSongForm').addEventListener('submit', async (e) => {
     e.preventDefault();
     const title = document.getElementById('newSongTitle').value.trim();
     const artist = document.getElementById('newSongArtist').value.trim();
     const audioUrl = document.getElementById('newSongAudioUrl').value.trim();
-    const playlistId = document.getElementById('newSongPlaylist').value;
     const lyrics = document.getElementById('newSongLyrics').value.trim();
     const coverFile = document.getElementById('newSongCoverFile').files[0];
-    if (!title || !audioUrl) {
-      alert('Заполните название и ссылку на MP3');
-      return;
-    }
+    const selectedPlaylists = Array.from(document.querySelectorAll('input[name="playlist"]:checked')).map(cb => cb.value);
+    if (!title || !audioUrl) { alert('Заполните название и ссылку на MP3'); return; }
+    if (!selectedPlaylists.length) { alert('Выберите хотя бы один плейлист'); return; }
+
     const submitBtn = e.target.querySelector('button[type="submit"]');
     submitBtn.disabled = true;
-    submitBtn.textContent = 'Добавление...';
+    const origHtml = submitBtn.innerHTML;
+    submitBtn.innerHTML = 'Добавление...';
+
     try {
       let coverUrl = null;
       if (coverFile) {
@@ -2530,23 +2767,26 @@
         audio_url: audioUrl,
         cover_url: coverUrl,
         lyrics: lyrics || null,
-        playlist_id: playlistId
+        playlist_ids: selectedPlaylists
       }]);
       if (error) throw error;
       e.target.reset();
+      const label = document.getElementById('coverFileLabel');
+      if (label) label.textContent = 'Обложка песни';
       await fetchAndMergeSongs();
       await renderAdminSongs();
       if (screens.main.classList.contains('active')) buildMainMenu();
       alert('Песня добавлена!');
     } catch(err) {
-      alert('Ошибка: ' + err.message);
+      console.error('[add] error:', err);
+      alert('Ошибка: ' + (err.message || err));
     } finally {
       submitBtn.disabled = false;
-      submitBtn.textContent = 'Добавить песню';
+      submitBtn.innerHTML = origHtml;
     }
   });
 
-  // ==== state ====
+  // ============ STATE ============
   let fullPlaylist = null;
   let fullIndex = -1;
   let liveQueue = [];
@@ -3068,6 +3308,7 @@
   playerBack.addEventListener('click', () => {
     haptic(8);
     clearFx(); setPartyActive(false);
+    lyricsIsland.style.display = 'none';
     showScreen('main');
     if (fullIndex >= 0 && currentQueue.length > 0){ showMiniPlayer(); mode = 'idle'; }
     else mode = 'idle';
