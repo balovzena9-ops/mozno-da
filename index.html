@@ -523,39 +523,10 @@
   .songName{flex:1 1 auto;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
   .songDur{flex:0 0 auto;font-size:10.5px;font-variant-numeric:tabular-nums;opacity:.6;}
 
-  /* ==== MOBILE LAYOUT (fixed scroll) ==== */
-  body.mobile-mode .library-layout{
-    flex-direction:column;
-    gap:12px;
-    overflow:hidden;
-    min-height:0;
-  }
-  body.mobile-mode .player-col{
-    flex:0 0 auto;
-    width:100%;
-    max-width:100%;
-    max-height:65vh;
-    overflow-y:auto;
-    overflow-x:hidden;
-    -webkit-overflow-scrolling:touch;
-    touch-action:pan-y;
-    overscroll-behavior:contain;
-    padding-right:2px;
-  }
-  body.mobile-mode .playlist-col{
-    flex:1 1 auto;
-    min-height:0;
-    width:100%;
-    overflow:hidden;
-  }
-  body.mobile-mode .playlist{
-    flex:1;
-    min-height:0;
-    overflow-y:auto;
-    -webkit-overflow-scrolling:touch;
-    touch-action:pan-y;
-    overscroll-behavior:contain;
-  }
+  body.mobile-mode .library-layout{flex-direction:column;gap:12px;overflow:hidden;min-height:0;}
+  body.mobile-mode .player-col{flex:0 0 auto;width:100%;max-width:100%;max-height:65vh;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;touch-action:pan-y;overscroll-behavior:contain;padding-right:2px;}
+  body.mobile-mode .playlist-col{flex:1 1 auto;min-height:0;width:100%;overflow:hidden;}
+  body.mobile-mode .playlist{flex:1;min-height:0;overflow-y:auto;-webkit-overflow-scrolling:touch;touch-action:pan-y;overscroll-behavior:contain;}
   body.mobile-mode .island{padding:16px 16px 18px;border-radius:24px;}
   body.mobile-mode .controls .btn{width:44px;height:44px;}
   body.mobile-mode .controls .btn.play{width:52px;height:52px;}
@@ -639,458 +610,197 @@
   .player-col::-webkit-scrollbar-track { background: transparent; }
   .player-col::-webkit-scrollbar-thumb { background: rgba(var(--c-rgb),.35); border-radius: 999px; }
 
-  /* ==== ADMIN — PROFESSIONAL REDESIGN ==== */
-  .admin-modal {
-    position: fixed;
-    inset: 0;
-    z-index: 1000;
-    background: rgba(0,0,0,.85);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    display: none;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    overflow-y: auto;
-  }
-  .admin-modal.show { display: flex; }
-  .admin-panel {
-    width: 100%;
-    max-width: 440px;
-    padding: 0;
-    border-radius: 24px;
-    background: linear-gradient(180deg, #1a1622 0%, #0d0a12 100%);
-    box-shadow:
-      0 40px 120px rgba(0,0,0,.85),
-      0 0 0 1px rgba(255,255,255,.06),
-      inset 0 1px 0 rgba(255,255,255,.08);
-    color: #fff;
-    position: relative;
-    margin: auto;
-    overflow: hidden;
-  }
-  html[data-theme="light"] .admin-panel { background: linear-gradient(180deg,#fff 0%,#f5f5f7 100%); color: #111; }
-  .admin-panel-wide { max-width: 600px; max-height: calc(100vh - 40px); display: flex; flex-direction: column; }
-  .admin-panel-header {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    padding: 24px 24px 20px;
-    border-bottom: 1px solid rgba(255,255,255,.06);
-    position: relative;
-  }
-  html[data-theme="light"] .admin-panel-header { border-bottom-color: rgba(0,0,0,.06); }
-  .admin-badge {
-    width: 48px;
-    height: 48px;
-    border-radius: 14px;
-    background: linear-gradient(135deg, #ff3a8a, #a855f7);
-    display: grid;
-    place-items: center;
-    flex-shrink: 0;
-    box-shadow: 0 10px 28px rgba(255,58,138,.4);
-  }
-  .admin-badge svg { width: 24px; height: 24px; color: #fff; }
-  .admin-panel-header-text { flex: 1; min-width: 0; }
-  .admin-panel-title {
-    margin: 0;
-    font-size: 20px;
-    font-weight: 900;
-    letter-spacing: -.4px;
-    background: linear-gradient(135deg,#fff,#ff8fc4 60%,#a7d4ff);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    line-height: 1.1;
-  }
-  html[data-theme="light"] .admin-panel-title {
-    background: linear-gradient(135deg,#111,#ff3a8a 60%,#4ea8ff);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-  .admin-panel-subtitle {
-    margin: 4px 0 0;
-    font-size: 10.5px;
-    font-weight: 700;
-    letter-spacing: 1.6px;
-    text-transform: uppercase;
-    color: rgba(255,255,255,.4);
-  }
-  html[data-theme="light"] .admin-panel-subtitle { color: rgba(0,0,0,.4); }
-  .admin-close {
-    position: absolute;
-    top: 18px;
-    right: 18px;
-    width: 34px;
-    height: 34px;
-    border-radius: 50%;
-    background: rgba(255,255,255,.06);
-    display: grid;
-    place-items: center;
-    color: rgba(255,255,255,.55);
-    cursor: pointer;
-    transition: all .2s ease;
-  }
-  html[data-theme="light"] .admin-close { background: rgba(0,0,0,.05); color: rgba(0,0,0,.55); }
-  .admin-close:hover { background: rgba(255,58,138,.25); color: #fff; transform: rotate(90deg); }
-  .admin-body { padding: 20px 24px 24px; overflow-y: auto; flex: 1; min-height: 0; }
+  /* ====== ADMIN ====== */
+  .admin-modal{position:fixed;inset:0;z-index:1000;background:rgba(0,0,0,.85);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);display:none;align-items:center;justify-content:center;padding:20px;overflow-y:auto;}
+  .admin-modal.show{display:flex;}
+  .admin-panel{width:100%;max-width:440px;padding:0;border-radius:24px;background:linear-gradient(180deg,#1a1622 0%,#0d0a12 100%);box-shadow:0 40px 120px rgba(0,0,0,.85),0 0 0 1px rgba(255,255,255,.06),inset 0 1px 0 rgba(255,255,255,.08);color:#fff;position:relative;margin:auto;overflow:hidden;}
+  html[data-theme="light"] .admin-panel{background:linear-gradient(180deg,#fff 0%,#f5f5f7 100%);color:#111;}
+  .admin-panel-wide{max-width:600px;max-height:calc(100vh - 40px);display:flex;flex-direction:column;}
+  .admin-panel-header{display:flex;align-items:center;gap:14px;padding:24px 24px 20px;border-bottom:1px solid rgba(255,255,255,.06);position:relative;}
+  html[data-theme="light"] .admin-panel-header{border-bottom-color:rgba(0,0,0,.06);}
+  .admin-badge{width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,#ff3a8a,#a855f7);display:grid;place-items:center;flex-shrink:0;box-shadow:0 10px 28px rgba(255,58,138,.4);}
+  .admin-badge svg{width:24px;height:24px;color:#fff;}
+  .admin-panel-header-text{flex:1;min-width:0;}
+  .admin-panel-title{margin:0;font-size:20px;font-weight:900;letter-spacing:-.4px;background:linear-gradient(135deg,#fff,#ff8fc4 60%,#a7d4ff);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;line-height:1.1;}
+  html[data-theme="light"] .admin-panel-title{background:linear-gradient(135deg,#111,#ff3a8a 60%,#4ea8ff);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+  .admin-panel-subtitle{margin:4px 0 0;font-size:10.5px;font-weight:700;letter-spacing:1.6px;text-transform:uppercase;color:rgba(255,255,255,.4);}
+  html[data-theme="light"] .admin-panel-subtitle{color:rgba(0,0,0,.4);}
+  .admin-close{position:absolute;top:18px;right:18px;width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.06);display:grid;place-items:center;color:rgba(255,255,255,.55);cursor:pointer;transition:all .2s ease;}
+  html[data-theme="light"] .admin-close{background:rgba(0,0,0,.05);color:rgba(0,0,0,.55);}
+  .admin-close:hover{background:rgba(255,58,138,.25);color:#fff;transform:rotate(90deg);}
+  .admin-body{padding:20px 24px 24px;overflow-y:auto;flex:1;min-height:0;}
+  .admin-sub{font-size:12px;color:rgba(255,255,255,.5);margin:0 0 20px;font-weight:500;}
+  html[data-theme="light"] .admin-sub{color:rgba(0,0,0,.5);}
+  .admin-section{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:18px;margin-bottom:16px;}
+  html[data-theme="light"] .admin-section{background:rgba(0,0,0,.02);border-color:rgba(0,0,0,.06);}
+  .admin-section-title{font-size:11px;font-weight:800;letter-spacing:1.6px;text-transform:uppercase;color:#ff8fc4;margin:0 0 14px;display:flex;align-items:center;gap:8px;}
+  .admin-section-title::before{content:'';width:3px;height:14px;background:linear-gradient(180deg,#ff3a8a,#a855f7);border-radius:2px;flex-shrink:0;}
+  .admin-panel input[type="text"],.admin-panel input[type="email"],.admin-panel input[type="password"],.admin-panel input[type="url"],.admin-panel textarea{width:100%;padding:12px 14px;border-radius:12px;border:1.5px solid rgba(255,255,255,.08);background:rgba(255,255,255,.04);color:#fff;font-size:14px;font-family:inherit;margin-bottom:10px;outline:none;transition:border-color .2s ease,box-shadow .2s ease,background .2s ease;}
+  html[data-theme="light"] .admin-panel input,html[data-theme="light"] .admin-panel textarea{border-color:rgba(0,0,0,.08);background:rgba(0,0,0,.03);color:#111;}
+  .admin-panel input:focus,.admin-panel textarea:focus{border-color:rgba(255,58,138,.6);background:rgba(255,58,138,.05);box-shadow:0 0 0 3px rgba(255,58,138,.15);}
+  .admin-panel textarea{min-height:100px;resize:vertical;line-height:1.5;}
+  .admin-panel input::placeholder,.admin-panel textarea::placeholder{color:rgba(255,255,255,.3);}
+  html[data-theme="light"] .admin-panel input::placeholder,html[data-theme="light"] .admin-panel textarea::placeholder{color:rgba(0,0,0,.3);}
+  .admin-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+  @media (max-width:500px){.admin-row{grid-template-columns:1fr;}}
+  .admin-playlists{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px;}
+  .admin-playlist-pill{position:relative;display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:999px;background:rgba(255,255,255,.04);border:1.5px solid rgba(255,255,255,.08);cursor:pointer;transition:all .2s ease;user-select:none;font-size:13px;font-weight:700;color:rgba(255,255,255,.7);}
+  html[data-theme="light"] .admin-playlist-pill{background:rgba(0,0,0,.03);border-color:rgba(0,0,0,.08);color:rgba(0,0,0,.7);}
+  .admin-playlist-pill:hover{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.16);color:#fff;}
+  html[data-theme="light"] .admin-playlist-pill:hover{background:rgba(0,0,0,.06);color:#111;}
+  .admin-playlist-pill input{position:absolute;opacity:0;pointer-events:none;width:0;height:0;}
+  .admin-playlist-pill:has(input:checked){background:linear-gradient(135deg,rgba(255,58,138,.18),rgba(168,85,247,.18));border-color:#ff3a8a;color:#fff;box-shadow:0 4px 18px rgba(255,58,138,.3);}
+  .admin-playlist-pill-dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.25);transition:all .2s ease;flex-shrink:0;}
+  html[data-theme="light"] .admin-playlist-pill-dot{background:rgba(0,0,0,.25);}
+  .admin-playlist-pill input:checked ~ .admin-playlist-pill-dot{background:#ff3a8a;box-shadow:0 0 10px #ff3a8a;}
+  .admin-playlist-pill-label{font-weight:700;}
+  .admin-file-btn{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:12px;border:1.5px dashed rgba(255,255,255,.15);background:rgba(255,255,255,.02);cursor:pointer;transition:all .2s ease;margin-bottom:10px;color:rgba(255,255,255,.7);font-weight:600;}
+  html[data-theme="light"] .admin-file-btn{border-color:rgba(0,0,0,.15);background:rgba(0,0,0,.02);color:rgba(0,0,0,.7);}
+  .admin-file-btn:hover{border-color:#ff3a8a;background:rgba(255,58,138,.06);color:#fff;}
+  html[data-theme="light"] .admin-file-btn:hover{color:#111;}
+  .admin-file-btn input[type="file"]{display:none;}
+  .admin-file-icon{width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,#ff3a8a,#a855f7);display:grid;place-items:center;flex-shrink:0;box-shadow:0 4px 12px rgba(255,58,138,.35);}
+  .admin-file-icon svg{width:16px;height:16px;color:#fff;}
+  .admin-file-text{flex:1;min-width:0;font-size:13px;}
+  .admin-file-text small{display:block;font-size:11px;opacity:.6;font-weight:500;margin-top:2px;}
 
-  .admin-panel h2.admin-h2 {
-    margin: 0 0 6px;
-    font-size: 22px;
-    font-weight: 900;
-    background: linear-gradient(135deg,#fff,#ff3a8a 60%,#4ea8ff);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+  /* NEW: cover preview in admin form */
+  .admin-cover-preview-wrap{
+    display:none;
+    align-items:center;
+    gap:14px;
+    padding:12px;
+    border-radius:12px;
+    background:linear-gradient(135deg,rgba(255,58,138,.08),rgba(168,85,247,.08));
+    border:1.5px solid rgba(255,58,138,.25);
+    margin-bottom:10px;
+    animation:previewIn .3s ease;
   }
-  html[data-theme="light"] .admin-panel h2.admin-h2 {
-    background: linear-gradient(135deg,#111,#ff3a8a 60%,#4ea8ff);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+  @keyframes previewIn { from { opacity:0; transform:translateY(-6px); } to { opacity:1; transform:translateY(0); } }
+  .admin-cover-preview{
+    width:72px;
+    height:72px;
+    border-radius:12px;
+    object-fit:cover;
+    flex-shrink:0;
+    box-shadow:0 6px 20px rgba(0,0,0,.45),0 0 0 2px rgba(255,58,138,.4);
   }
-  .admin-sub {
-    font-size: 12px;
-    color: rgba(255,255,255,.5);
-    margin: 0 0 20px;
-    font-weight: 500;
+  .admin-cover-info{
+    flex:1;
+    min-width:0;
   }
-  html[data-theme="light"] .admin-sub { color: rgba(0,0,0,.5); }
+  .admin-cover-info-name{
+    font-size:12.5px;
+    font-weight:700;
+    color:#fff;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    margin-bottom:3px;
+  }
+  html[data-theme="light"] .admin-cover-info-name{color:#111;}
+  .admin-cover-info-meta{
+    font-size:11px;
+    color:rgba(255,255,255,.55);
+    font-weight:500;
+  }
+  html[data-theme="light"] .admin-cover-info-meta{color:rgba(0,0,0,.55);}
+  .admin-cover-remove{
+    width:28px;
+    height:28px;
+    border-radius:50%;
+    background:rgba(220,38,38,.15);
+    color:#ff8888;
+    display:grid;
+    place-items:center;
+    cursor:pointer;
+    flex-shrink:0;
+    border:0;
+    transition:all .2s ease;
+  }
+  .admin-cover-remove:hover{background:rgba(220,38,38,.3);color:#fff;}
 
-  .admin-section {
-    background: rgba(255,255,255,.02);
-    border: 1px solid rgba(255,255,255,.06);
-    border-radius: 16px;
-    padding: 18px;
-    margin-bottom: 16px;
+  /* NEW: status message in admin form */
+  .admin-status{
+    display:none;
+    padding:12px 14px;
+    border-radius:11px;
+    font-size:12.5px;
+    font-weight:600;
+    margin-top:10px;
+    line-height:1.5;
+    animation:statusIn .3s ease;
   }
-  html[data-theme="light"] .admin-section { background: rgba(0,0,0,.02); border-color: rgba(0,0,0,.06); }
-  .admin-section-title {
-    font-size: 11px;
-    font-weight: 800;
-    letter-spacing: 1.6px;
-    text-transform: uppercase;
-    color: #ff8fc4;
-    margin: 0 0 14px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
+  @keyframes statusIn { from { opacity:0; transform:translateY(-4px); } to { opacity:1; transform:translateY(0); } }
+  .admin-status.show{display:block;}
+  .admin-status-loading{
+    background:rgba(78,168,255,.1);
+    border:1px solid rgba(78,168,255,.35);
+    color:#7cc4ff;
   }
-  .admin-section-title::before {
-    content: '';
-    width: 3px;
-    height: 14px;
-    background: linear-gradient(180deg, #ff3a8a, #a855f7);
-    border-radius: 2px;
-    flex-shrink: 0;
+  .admin-status-success{
+    background:rgba(34,197,94,.1);
+    border:1px solid rgba(34,197,94,.35);
+    color:#4ade80;
+  }
+  .admin-status-error{
+    background:rgba(220,38,38,.1);
+    border:1px solid rgba(220,38,38,.35);
+    color:#ff8888;
+  }
+  .admin-status-warn{
+    background:rgba(245,158,11,.1);
+    border:1px solid rgba(245,158,11,.35);
+    color:#fbbf24;
   }
 
-  .admin-panel input[type="text"],
-  .admin-panel input[type="email"],
-  .admin-panel input[type="password"],
-  .admin-panel input[type="url"],
-  .admin-panel textarea {
-    width: 100%;
-    padding: 12px 14px;
-    border-radius: 12px;
-    border: 1.5px solid rgba(255,255,255,.08);
-    background: rgba(255,255,255,.04);
-    color: #fff;
-    font-size: 14px;
-    font-family: inherit;
-    margin-bottom: 10px;
-    outline: none;
-    transition: border-color .2s ease, box-shadow .2s ease, background .2s ease;
+  /* NEW: loader for cover upload inside button */
+  .admin-loader{
+    display:inline-block;
+    width:14px;
+    height:14px;
+    border:2px solid rgba(255,255,255,.3);
+    border-top-color:#fff;
+    border-radius:50%;
+    animation:spin .7s linear infinite;
+    vertical-align:middle;
+    margin-right:6px;
   }
-  html[data-theme="light"] .admin-panel input,
-  html[data-theme="light"] .admin-panel textarea {
-    border-color: rgba(0,0,0,.08);
-    background: rgba(0,0,0,.03);
-    color: #111;
-  }
-  .admin-panel input:focus,
-  .admin-panel textarea:focus {
-    border-color: rgba(255,58,138,.6);
-    background: rgba(255,58,138,.05);
-    box-shadow: 0 0 0 3px rgba(255,58,138,.15);
-  }
-  .admin-panel textarea { min-height: 100px; resize: vertical; line-height: 1.5; }
-  .admin-panel input::placeholder,
-  .admin-panel textarea::placeholder { color: rgba(255,255,255,.3); }
-  html[data-theme="light"] .admin-panel input::placeholder,
-  html[data-theme="light"] .admin-panel textarea::placeholder { color: rgba(0,0,0,.3); }
+  @keyframes spin { to { transform:rotate(360deg); } }
 
-  .admin-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-  @media (max-width: 500px) { .admin-row { grid-template-columns: 1fr; } }
-
-  /* Playlist selector (checkboxes as pills) */
-  .admin-playlists {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 12px;
-  }
-  .admin-playlist-pill {
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 10px 16px;
-    border-radius: 999px;
-    background: rgba(255,255,255,.04);
-    border: 1.5px solid rgba(255,255,255,.08);
-    cursor: pointer;
-    transition: all .2s ease;
-    user-select: none;
-    font-size: 13px;
-    font-weight: 700;
-    color: rgba(255,255,255,.7);
-  }
-  html[data-theme="light"] .admin-playlist-pill {
-    background: rgba(0,0,0,.03);
-    border-color: rgba(0,0,0,.08);
-    color: rgba(0,0,0,.7);
-  }
-  .admin-playlist-pill:hover {
-    background: rgba(255,255,255,.08);
-    border-color: rgba(255,255,255,.16);
-    color: #fff;
-  }
-  html[data-theme="light"] .admin-playlist-pill:hover { background: rgba(0,0,0,.06); color: #111; }
-  .admin-playlist-pill input {
-    position: absolute;
-    opacity: 0;
-    pointer-events: none;
-    width: 0;
-    height: 0;
-  }
-  .admin-playlist-pill input:checked ~ .admin-playlist-pill-dot {
-    background: #ff3a8a;
-    box-shadow: 0 0 10px #ff3a8a;
-  }
-  .admin-playlist-pill:has(input:checked) {
-    background: linear-gradient(135deg, rgba(255,58,138,.18), rgba(168,85,247,.18));
-    border-color: #ff3a8a;
-    color: #fff;
-    box-shadow: 0 4px 18px rgba(255,58,138,.3);
-  }
-  .admin-playlist-pill-dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: rgba(255,255,255,.25);
-    transition: all .2s ease;
-    flex-shrink: 0;
-  }
-  html[data-theme="light"] .admin-playlist-pill-dot { background: rgba(0,0,0,.25); }
-  .admin-playlist-pill-label { font-weight: 700; }
-
-  /* File upload button */
-  .admin-file-btn {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 12px 14px;
-    border-radius: 12px;
-    border: 1.5px dashed rgba(255,255,255,.15);
-    background: rgba(255,255,255,.02);
-    cursor: pointer;
-    transition: all .2s ease;
-    margin-bottom: 10px;
-    color: rgba(255,255,255,.7);
-    font-weight: 600;
-  }
-  html[data-theme="light"] .admin-file-btn {
-    border-color: rgba(0,0,0,.15);
-    background: rgba(0,0,0,.02);
-    color: rgba(0,0,0,.7);
-  }
-  .admin-file-btn:hover {
-    border-color: #ff3a8a;
-    background: rgba(255,58,138,.06);
-    color: #fff;
-  }
-  html[data-theme="light"] .admin-file-btn:hover { color: #111; }
-  .admin-file-btn input[type="file"] { display: none; }
-  .admin-file-icon {
-    width: 34px;
-    height: 34px;
-    border-radius: 9px;
-    background: linear-gradient(135deg, #ff3a8a, #a855f7);
-    display: grid;
-    place-items: center;
-    flex-shrink: 0;
-    box-shadow: 0 4px 12px rgba(255,58,138,.35);
-  }
-  .admin-file-icon svg { width: 16px; height: 16px; color: #fff; }
-  .admin-file-text { flex: 1; min-width: 0; font-size: 13px; }
-  .admin-file-text small { display: block; font-size: 11px; opacity: .6; font-weight: 500; margin-top: 2px; }
-
-  .admin-btn-primary {
-    width: 100%;
-    padding: 13px;
-    border-radius: 12px;
-    border: 0;
-    background: linear-gradient(135deg, #ff3a8a 0%, #a855f7 100%);
-    color: #fff;
-    font-size: 14px;
-    font-weight: 800;
-    letter-spacing: .5px;
-    cursor: pointer;
-    transition: transform .15s ease, box-shadow .2s ease;
-    box-shadow: 0 8px 24px rgba(255,58,138,.4);
-    margin-top: 4px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-  }
-  .admin-btn-primary:hover { transform: translateY(-1px); box-shadow: 0 12px 32px rgba(255,58,138,.5); }
-  .admin-btn-primary:active { transform: scale(.98); }
-  .admin-btn-primary:disabled { opacity: .6; cursor: not-allowed; transform: none; }
-  .admin-btn-primary svg { width: 16px; height: 16px; }
-
-  .admin-error {
-    margin-top: 12px;
-    font-size: 12.5px;
-    color: #ff6b6b;
-    text-align: center;
-    font-weight: 600;
-    min-height: 16px;
-  }
-  .admin-empty {
-    padding: 32px 20px;
-    text-align: center;
-    color: rgba(255,255,255,.4);
-    font-size: 13px;
-    font-weight: 500;
-    line-height: 1.6;
-  }
-  html[data-theme="light"] .admin-empty { color: rgba(0,0,0,.4); }
-  .admin-empty svg { display: block; margin: 0 auto 12px; width: 42px; height: 42px; opacity: .35; }
-
-  .admin-song-item {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    padding: 12px;
-    border-radius: 14px;
-    margin-bottom: 8px;
-    background: rgba(255,255,255,.03);
-    border: 1px solid rgba(255,255,255,.05);
-    transition: all .2s ease;
-  }
-  html[data-theme="light"] .admin-song-item { background: rgba(0,0,0,.02); border-color: rgba(0,0,0,.05); }
-  .admin-song-item:hover {
-    background: rgba(255,255,255,.06);
-    border-color: rgba(255,255,255,.1);
-  }
-  html[data-theme="light"] .admin-song-item:hover { background: rgba(0,0,0,.04); border-color: rgba(0,0,0,.1); }
-  .admin-song-item img {
-    width: 48px;
-    height: 48px;
-    border-radius: 11px;
-    object-fit: cover;
-    flex-shrink: 0;
-    box-shadow: 0 4px 12px rgba(0,0,0,.3);
-  }
-  .admin-song-cover-placeholder {
-    width: 48px;
-    height: 48px;
-    border-radius: 11px;
-    background: linear-gradient(135deg, rgba(255,58,138,.25), rgba(168,85,247,.25));
-    display: grid;
-    place-items: center;
-    color: #ff8fc4;
-    font-size: 20px;
-    font-weight: 900;
-    flex-shrink: 0;
-    box-shadow: 0 4px 12px rgba(0,0,0,.2);
-  }
-  .admin-song-info { flex: 1; min-width: 0; }
-  .admin-song-info b {
-    display: block;
-    font-size: 14px;
-    font-weight: 700;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    color: #fff;
-  }
-  html[data-theme="light"] .admin-song-info b { color: #111; }
-  .admin-song-info .admin-song-artist {
-    display: block;
-    font-size: 12px;
-    color: rgba(255,255,255,.5);
-    margin-top: 2px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-  html[data-theme="light"] .admin-song-info .admin-song-artist { color: rgba(0,0,0,.5); }
-  .admin-song-badges {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 4px;
-    margin-top: 6px;
-  }
-  .admin-song-badge {
-    font-size: 9.5px;
-    font-weight: 700;
-    padding: 2px 8px;
-    border-radius: 999px;
-    background: rgba(255,58,138,.15);
-    color: #ff8fc4;
-    border: 1px solid rgba(255,58,138,.3);
-    text-transform: uppercase;
-    letter-spacing: .5px;
-  }
-  .admin-song-actions { flex-shrink: 0; display: flex; gap: 6px; }
-  .admin-song-actions button {
-    padding: 8px 12px;
-    border-radius: 9px;
-    border: 0;
-    background: rgba(220,38,38,.12);
-    color: #ff8888;
-    font-size: 11.5px;
-    font-weight: 700;
-    cursor: pointer;
-    transition: all .2s ease;
-    display: flex;
-    align-items: center;
-    gap: 4px;
-  }
-  .admin-song-actions button:hover { background: rgba(220,38,38,.25); color: #fff; }
-  .admin-song-actions button svg { width: 12px; height: 12px; }
-
-  .admin-toolbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 10px;
-    margin-bottom: 12px;
-  }
-  .admin-toolbar .admin-section-title { margin: 0; }
-  .admin-refresh-btn {
-    padding: 7px 12px;
-    border-radius: 9px;
-    background: rgba(255,255,255,.05);
-    border: 1px solid rgba(255,255,255,.08);
-    color: rgba(255,255,255,.7);
-    font-size: 11.5px;
-    font-weight: 700;
-    cursor: pointer;
-    transition: all .2s ease;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-  }
-  html[data-theme="light"] .admin-refresh-btn { background: rgba(0,0,0,.03); border-color: rgba(0,0,0,.08); color: rgba(0,0,0,.7); }
-  .admin-refresh-btn:hover { background: rgba(255,255,255,.1); color: #fff; }
-  html[data-theme="light"] .admin-refresh-btn:hover { background: rgba(0,0,0,.06); color: #111; }
-  .admin-refresh-btn svg { width: 12px; height: 12px; }
+  .admin-btn-primary{width:100%;padding:13px;border-radius:12px;border:0;background:linear-gradient(135deg,#ff3a8a 0%,#a855f7 100%);color:#fff;font-size:14px;font-weight:800;letter-spacing:.5px;cursor:pointer;transition:transform .15s ease,box-shadow .2s ease;box-shadow:0 8px 24px rgba(255,58,138,.4);margin-top:4px;display:flex;align-items:center;justify-content:center;gap:8px;}
+  .admin-btn-primary:hover{transform:translateY(-1px);box-shadow:0 12px 32px rgba(255,58,138,.5);}
+  .admin-btn-primary:active{transform:scale(.98);}
+  .admin-btn-primary:disabled{opacity:.6;cursor:not-allowed;transform:none;}
+  .admin-btn-primary svg{width:16px;height:16px;}
+  .admin-error{margin-top:12px;font-size:12.5px;color:#ff6b6b;text-align:center;font-weight:600;min-height:16px;}
+  .admin-empty{padding:32px 20px;text-align:center;color:rgba(255,255,255,.4);font-size:13px;font-weight:500;line-height:1.6;}
+  html[data-theme="light"] .admin-empty{color:rgba(0,0,0,.4);}
+  .admin-empty svg{display:block;margin:0 auto 12px;width:42px;height:42px;opacity:.35;}
+  .admin-song-item{display:flex;align-items:center;gap:14px;padding:12px;border-radius:14px;margin-bottom:8px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.05);transition:all .2s ease;}
+  html[data-theme="light"] .admin-song-item{background:rgba(0,0,0,.02);border-color:rgba(0,0,0,.05);}
+  .admin-song-item:hover{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.1);}
+  html[data-theme="light"] .admin-song-item:hover{background:rgba(0,0,0,.04);border-color:rgba(0,0,0,.1);}
+  .admin-song-item img{width:48px;height:48px;border-radius:11px;object-fit:cover;flex-shrink:0;box-shadow:0 4px 12px rgba(0,0,0,.3);}
+  .admin-song-cover-placeholder{width:48px;height:48px;border-radius:11px;background:linear-gradient(135deg,rgba(255,58,138,.25),rgba(168,85,247,.25));display:grid;place-items:center;color:#ff8fc4;font-size:20px;font-weight:900;flex-shrink:0;box-shadow:0 4px 12px rgba(0,0,0,.2);}
+  .admin-song-info{flex:1;min-width:0;}
+  .admin-song-info b{display:block;font-size:14px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#fff;}
+  html[data-theme="light"] .admin-song-info b{color:#111;}
+  .admin-song-info .admin-song-artist{display:block;font-size:12px;color:rgba(255,255,255,.5);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  html[data-theme="light"] .admin-song-info .admin-song-artist{color:rgba(0,0,0,.5);}
+  .admin-song-badges{display:flex;flex-wrap:wrap;gap:4px;margin-top:6px;}
+  .admin-song-badge{font-size:9.5px;font-weight:700;padding:2px 8px;border-radius:999px;background:rgba(255,58,138,.15);color:#ff8fc4;border:1px solid rgba(255,58,138,.3);text-transform:uppercase;letter-spacing:.5px;}
+  .admin-song-actions{flex-shrink:0;display:flex;gap:6px;}
+  .admin-song-actions button{padding:8px 12px;border-radius:9px;border:0;background:rgba(220,38,38,.12);color:#ff8888;font-size:11.5px;font-weight:700;cursor:pointer;transition:all .2s ease;display:flex;align-items:center;gap:4px;}
+  .admin-song-actions button:hover{background:rgba(220,38,38,.25);color:#fff;}
+  .admin-song-actions button svg{width:12px;height:12px;}
+  .admin-toolbar{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px;}
+  .admin-toolbar .admin-section-title{margin:0;}
+  .admin-refresh-btn{padding:7px 12px;border-radius:9px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);color:rgba(255,255,255,.7);font-size:11.5px;font-weight:700;cursor:pointer;transition:all .2s ease;display:flex;align-items:center;gap:5px;}
+  html[data-theme="light"] .admin-refresh-btn{background:rgba(0,0,0,.03);border-color:rgba(0,0,0,.08);color:rgba(0,0,0,.7);}
+  .admin-refresh-btn:hover{background:rgba(255,255,255,.1);color:#fff;}
+  html[data-theme="light"] .admin-refresh-btn:hover{background:rgba(0,0,0,.06);color:#111;}
+  .admin-refresh-btn svg{width:12px;height:12px;}
 
   .theme-modal{position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.5);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;padding:24px;opacity:0;visibility:hidden;transition:opacity .3s ease, visibility .3s ease;}
   .theme-modal.show{opacity:1;visibility:visible;}
@@ -1578,7 +1288,6 @@
   <div class="fx" id="fx" aria-hidden="true"></div>
 </div>
 
-<!-- ADMIN LOGIN MODAL -->
 <div class="admin-modal" id="adminLoginModal">
   <div class="admin-panel">
     <div class="admin-panel-header">
@@ -1608,7 +1317,6 @@
   </div>
 </div>
 
-<!-- ADMIN PANEL MODAL -->
 <div class="admin-modal" id="adminPanelModal">
   <div class="admin-panel admin-panel-wide">
     <div class="admin-panel-header">
@@ -1660,7 +1368,18 @@
             </div>
             <input type="file" id="newSongCoverFile" accept="image/*">
           </label>
+          <div class="admin-cover-preview-wrap" id="coverPreviewWrap">
+            <img class="admin-cover-preview" id="coverPreviewImg" alt="">
+            <div class="admin-cover-info">
+              <div class="admin-cover-info-name" id="coverPreviewName">—</div>
+              <div class="admin-cover-info-meta" id="coverPreviewMeta">—</div>
+            </div>
+            <button type="button" class="admin-cover-remove" id="coverPreviewRemove" aria-label="Убрать обложку">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><path d="M6 6l12 12M18 6L6 18"/></svg>
+            </button>
+          </div>
           <textarea id="newSongLyrics" placeholder="Текст песни (обычный текст, без форматирования)"></textarea>
+          <div class="admin-status" id="adminStatus"></div>
           <button type="submit" class="admin-btn-primary">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
             Добавить песню
@@ -2529,27 +2248,18 @@
     lyricsIsland.style.display = 'none';
   });
 
-  // ============ SUPABASE SONGS MERGE ============
   async function fetchAndMergeSongs(){
-    if (!supabaseClient) {
-      console.warn('[fetch] no supabase client');
-      return;
-    }
+    if (!supabaseClient) return;
     try {
       const { data, error } = await supabaseClient.from('songs').select('*').order('created_at', { ascending: true });
-      if (error) {
-        console.warn('[Supabase] fetch error:', error);
-        return;
-      }
+      if (error) { console.warn('[Supabase] fetch error:', error); return; }
       supabaseSongs = data || [];
       console.log('[Supabase] fetched songs:', supabaseSongs.length);
 
-      // Strip previous Supabase songs
       PLAYLISTS.forEach(pl => {
         pl.songs = pl.songs.filter(s => !s._dbId);
       });
 
-      // Re-add current
       supabaseSongs.forEach(row => {
         const ids = row.playlist_ids && row.playlist_ids.length
           ? row.playlist_ids
@@ -2567,7 +2277,6 @@
           const target = PLAYLISTS.find(p => p.id === pid);
           if (target) target.songs.push(songObj);
         });
-        // Also auto-include in mayskiy if in kolab or victoria
         if ((ids.includes('kolab') || ids.includes('victoria')) && !ids.includes('mayskiy')) {
           const mays = PLAYLISTS.find(p => p.id === 'mayskiy');
           if (mays && !mays.songs.find(s => s.url === songObj.url)) mays.songs.push(songObj);
@@ -2578,7 +2287,6 @@
     }
   }
 
-  // ============ ADMIN LOGIC ============
   let secretBuffer = '';
   document.addEventListener('keydown', (e) => {
     const tag = (e.target.tagName || '').toLowerCase();
@@ -2599,7 +2307,7 @@
 
   async function openAdminLogin(){
     if (!supabaseClient) {
-      alert('Supabase не настроен. Проверьте SUPABASE_URL.');
+      alert('Supabase не настроен.');
       return;
     }
     try {
@@ -2724,43 +2432,111 @@
     }
   }
 
-  // Cover file label update
-  document.getElementById('newSongCoverFile').addEventListener('change', (e) => {
+  // ======== COVER FILE PREVIEW ========
+  const coverFileInput = document.getElementById('newSongCoverFile');
+  const coverPreviewWrap = document.getElementById('coverPreviewWrap');
+  const coverPreviewImg = document.getElementById('coverPreviewImg');
+  const coverPreviewName = document.getElementById('coverPreviewName');
+  const coverPreviewMeta = document.getElementById('coverPreviewMeta');
+  const coverPreviewRemove = document.getElementById('coverPreviewRemove');
+  const coverFileLabel = document.getElementById('coverFileLabel');
+
+  function resetCoverPreview(){
+    if (coverPreviewWrap) coverPreviewWrap.style.display = 'none';
+    if (coverPreviewImg) coverPreviewImg.removeAttribute('src');
+    if (coverFileLabel) coverFileLabel.textContent = 'Обложка песни';
+    if (coverFileInput) coverFileInput.value = '';
+  }
+
+  coverFileInput.addEventListener('change', (e) => {
     const file = e.target.files[0];
-    const label = document.getElementById('coverFileLabel');
-    if (file && label) label.textContent = file.name.length > 32 ? file.name.slice(0, 29) + '...' : file.name;
-    else if (label) label.textContent = 'Обложка песни';
+    if (!file) { resetCoverPreview(); return; }
+    if (file.size > 2 * 1024 * 1024) {
+      showStatus('error', '❌ Файл больше 2 МБ. Выберите меньший размер.');
+      resetCoverPreview();
+      return;
+    }
+    const sizeKB = (file.size / 1024).toFixed(0);
+    if (coverFileLabel) coverFileLabel.textContent = file.name.length > 28 ? file.name.slice(0, 25) + '...' : file.name;
+    if (coverPreviewName) coverPreviewName.textContent = file.name;
+    if (coverPreviewMeta) coverPreviewMeta.textContent = sizeKB + ' КБ · готово к загрузке ✓';
+    const reader = new FileReader();
+    reader.onload = (ev) => {
+      if (coverPreviewImg) coverPreviewImg.src = ev.target.result;
+      if (coverPreviewWrap) coverPreviewWrap.style.display = 'flex';
+    };
+    reader.readAsDataURL(file);
   });
+
+  coverPreviewRemove.addEventListener('click', resetCoverPreview);
+
+  // ======== STATUS MESSAGES ========
+  const adminStatusEl = document.getElementById('adminStatus');
+  function showStatus(type, message){
+    if (!adminStatusEl) return;
+    adminStatusEl.className = 'admin-status show admin-status-' + type;
+    adminStatusEl.innerHTML = message;
+  }
+  function hideStatus(){
+    if (!adminStatusEl) return;
+    adminStatusEl.classList.remove('show');
+    adminStatusEl.innerHTML = '';
+  }
 
   document.getElementById('adminAddSongForm').addEventListener('submit', async (e) => {
     e.preventDefault();
+    hideStatus();
     const title = document.getElementById('newSongTitle').value.trim();
     const artist = document.getElementById('newSongArtist').value.trim();
     const audioUrl = document.getElementById('newSongAudioUrl').value.trim();
     const lyrics = document.getElementById('newSongLyrics').value.trim();
     const coverFile = document.getElementById('newSongCoverFile').files[0];
     const selectedPlaylists = Array.from(document.querySelectorAll('input[name="playlist"]:checked')).map(cb => cb.value);
-    if (!title || !audioUrl) { alert('Заполните название и ссылку на MP3'); return; }
-    if (!selectedPlaylists.length) { alert('Выберите хотя бы один плейлист'); return; }
+    if (!title || !audioUrl) { showStatus('error', '❌ Заполните название и ссылку на MP3'); return; }
+    if (!selectedPlaylists.length) { showStatus('error', '❌ Выберите хотя бы один плейлист'); return; }
 
     const submitBtn = e.target.querySelector('button[type="submit"]');
     submitBtn.disabled = true;
     const origHtml = submitBtn.innerHTML;
-    submitBtn.innerHTML = 'Добавление...';
 
     try {
       let coverUrl = null;
+
+      // Проверяем доступность bucket заранее
+      if (coverFile) {
+        showStatus('loading', '<span class="admin-loader"></span>Проверка Storage…');
+        // Проверка: пробуем list, если bucket не существует — будет ошибка
+        const { error: probeErr } = await supabaseClient.storage.from('covers').list('', { limit: 1 });
+        if (probeErr) {
+          if (probeErr.message && (probeErr.message.includes('not found') || probeErr.message.includes('Bucket not found'))) {
+            throw new Error('BUCKET_MISSING');
+          }
+        }
+      }
+
       if (coverFile) {
         if (coverFile.size > 2 * 1024 * 1024) throw new Error('Обложка больше 2 МБ');
+        showStatus('loading', '<span class="admin-loader"></span>Загрузка обложки (1/2)…');
         const fileExt = coverFile.name.split('.').pop() || 'jpg';
         const filePath = `${Date.now()}_${Math.random().toString(36).slice(2)}.${fileExt}`;
         const { error: uploadError } = await supabaseClient.storage
           .from('covers')
           .upload(filePath, coverFile, { cacheControl: '3600', upsert: false });
-        if (uploadError) throw uploadError;
+        if (uploadError) {
+          if (uploadError.message && (uploadError.message.includes('not found') || uploadError.message.includes('Bucket not found'))) {
+            throw new Error('BUCKET_MISSING');
+          }
+          if (uploadError.message && uploadError.message.includes('row-level security')) {
+            throw new Error('RLS_ERROR');
+          }
+          throw uploadError;
+        }
         const { data: urlData } = supabaseClient.storage.from('covers').getPublicUrl(filePath);
         coverUrl = urlData.publicUrl;
       }
+
+      showStatus('loading', '<span class="admin-loader"></span>Сохранение в базу (2/2)…');
+
       const { error } = await supabaseClient.from('songs').insert([{
         title,
         artist: artist || null,
@@ -2769,24 +2545,42 @@
         lyrics: lyrics || null,
         playlist_ids: selectedPlaylists
       }]);
-      if (error) throw error;
+      if (error) {
+        if (error.message && error.message.includes('row-level security')) throw new Error('RLS_ERROR');
+        throw error;
+      }
+
+      showStatus('success', '✅ Песня «' + escapeHtml(title) + '» успешно добавлена!');
       e.target.reset();
-      const label = document.getElementById('coverFileLabel');
-      if (label) label.textContent = 'Обложка песни';
+      resetCoverPreview();
+
       await fetchAndMergeSongs();
       await renderAdminSongs();
       if (screens.main.classList.contains('active')) buildMainMenu();
-      alert('Песня добавлена!');
     } catch(err) {
       console.error('[add] error:', err);
-      alert('Ошибка: ' + (err.message || err));
+      let msg = err.message || String(err);
+      if (msg === 'BUCKET_MISSING') {
+        showStatus('error',
+          '❌ <b>Bucket «covers» не создан в Supabase Storage.</b><br><br>' +
+          '<b>Решение:</b> откройте Supabase → SQL Editor и выполните:<br>' +
+          '<code style="display:block;margin-top:6px;padding:8px;border-radius:6px;background:rgba(0,0,0,.4);font-size:11px;font-family:monospace;white-space:pre-wrap;user-select:text;">INSERT INTO storage.buckets (id, name, public) VALUES (\'covers\', \'covers\', true) ON CONFLICT (id) DO UPDATE SET public = true;</code>' +
+          '<br>Также создайте RLS-политики для storage.objects (SELECT/INSERT/UPDATE/DELETE для authenticated с проверкой auth.uid()).');
+      } else if (msg === 'RLS_ERROR') {
+        showStatus('error',
+          '❌ <b>Row Level Security блокирует операцию.</b><br>' +
+          'Проверьте, что RLS-политики для таблицы songs и storage.objects разрешают INSERT для вашего admin-аккаунта (id: 67a920fb-…).');
+      } else if (msg === 'Обложка больше 2 МБ') {
+        showStatus('error', '❌ Обложка больше 2 МБ');
+      } else {
+        showStatus('error', '❌ Ошибка: ' + escapeHtml(msg));
+      }
     } finally {
       submitBtn.disabled = false;
       submitBtn.innerHTML = origHtml;
     }
   });
 
-  // ============ STATE ============
   let fullPlaylist = null;
   let fullIndex = -1;
   let liveQueue = [];
